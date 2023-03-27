@@ -1,7 +1,5 @@
-import { BaseClass } from "./baseclass.js";
 import { Race } from "./race.js";
 import { Classe } from "./classe.js";
-import { Caracteristique } from "./caracteristique.js";
 interface LevelData {
     experienceMin: number;
     experienceMax: number;
@@ -40,75 +38,35 @@ const levelTable: LevelData[] = [
     { experienceMin: 1000000, experienceMax: 1000000000, level: 30}
 ];
 
-export class Personnage extends BaseClass {
+export class Personnage {
     private idrace: string = "";
-    public race: Race = new Race(this.idrace);
-    public classe: Classe = new Classe();
+    private idclasse: string = "";
+    public race: Race;
+    public classe: Classe;
     public pointExperience: number = 0;
+    public Bforce: number = 0
+    public Bconstitution: number = 0
+    public Bdexterite: number = 0
+    public Bintelligence: number = 0
+    public Bsagesse: number = 0
+    public Bcharisme: number = 0
 
     constructor(force: number, constitution: number, dexterite: number, intelligence: number, sagesse: number, charisme: number,
-        experience: number, idRace:string) {
-        super();        
-        /*this.race = new Race(idRace)
-        this.carac.force = force + this.race.carac.force;
-        this.carac.constitution = constitution + this.race.carac.constitution;
-        this.carac.dexterite = dexterite + this.race.carac.dexterite;
-        this.carac.intelligence = intelligence + this.race.carac.intelligence;
-        this.carac.sagesse = sagesse + this.race.carac.sagesse;
-        this.carac.charisme = charisme + this.race.carac.charisme;
-        */
-        console.log('biloute' && this.race.carac.dexterite);
-        this.carac.force = force;
-        this.carac.constitution = constitution;
-        this.carac.dexterite = dexterite;
-        this.carac.intelligence = intelligence;
-        this.carac.sagesse = sagesse;
-        this.carac.charisme = charisme;
-        this.pointExperience = experience;
-        this.idrace = idRace
-
-        /*const raceSelect = document.getElementById("race") as HTMLSelectElement;
-        raceSelect.addEventListener("change", () => {
-        const raceName = raceSelect.value;
-        this.race = this.chargerRace(raceName);
-        this.calculerCaracteristiques();
-        }
-        );*/
-
-        // Charge la race par défaut
-        //this.race = this.chargerRace(raceSelect.value);
-        //this.calculerCaracteristiques();
+        experience: number, idRace:string, idClasse: string) {
+            //console.log('ici cest bien Personnage');
+            //console.log(idRace);
+            this.Bforce = force;
+            this.Bconstitution = constitution;
+            this.Bdexterite = dexterite;
+            this.Bintelligence = intelligence;
+            this.Bsagesse = sagesse;
+            this.Bcharisme = charisme;
+            this.pointExperience = experience;
+            this.idrace = idRace;
+            this.idclasse = idClasse;
+            this.race = new Race(this.idrace);
+            this.classe  = new Classe(this.idclasse);
     }
-/*
-    private chargerRace(nomRace: string): Race {
-        const races = this.chargerRaces();
-        const raceData = races[nomRace];
-        const race = new Race(this.idrace);
-        race.nom = raceData.nom;
-        race.carac = new Caracteristique(
-          raceData.carac.force,
-          raceData.carac.dexterite,
-          raceData.carac.constitution,
-          raceData.carac.intelligence,
-          raceData.carac.sagesse,
-          raceData.carac.charisme
-        );
-        return race;
-      }
-    
-      private chargerRaces(): { [key: string]: any } {
-        const xhr = new XMLHttpRequest();
-        xhr.open("GET", "races.json", false);
-        xhr.send();
-        return JSON.parse(xhr.responseText);
-      }
-    
-      private calculerCaracteristiques(): void {
-        // ... calcule les caractéristiques du personnage en fonction de la race
-      }
-
-*/
-
     public get niveau(): number { return this.getLevelFromExperience(this.pointExperience);}
     public get demiNiveau(): number{ return Math.floor(this.niveau/2);}
     public getLevelFromExperience(experience: number): number {
@@ -147,12 +105,19 @@ export class Personnage extends BaseClass {
             return Math.floor((caractersitique-10)/2);
         } */       
     }
-    public get ModForce(): number { return this.getCalculModCarac(this.carac.force);}
-    public get ModConstitution(): number { return this.getCalculModCarac(this.carac.constitution);}
-    public get ModDexterite(): number { return this.getCalculModCarac(this.carac.dexterite);}
-    public get ModIntelligence(): number { return this.getCalculModCarac(this.carac.intelligence);}
-    public get ModSagesse(): number { return this.getCalculModCarac(this.carac.sagesse);}
-    public get ModCharisme(): number { return this.getCalculModCarac(this.carac.charisme);}
+    public get Pforce(): number { return this.Bforce + this.race.Rforce;}
+    public get Pconstitution(): number { return this.Bconstitution + this.race.Rconstitution;}
+    public get Pdexterite(): number { return this.Bdexterite + this.race.Rdexterite;}
+    public get Pintelligence(): number { return this.Bintelligence + this.race.Rintelligence;}
+    public get Psagesse(): number { return this.Bsagesse + this.race.Rsagesse;}
+    public get Pcharisme(): number { return this.Bcharisme + this.race.Rcharisme;}
+
+    public get ModForce(): number { return this.getCalculModCarac(this.Pforce);}
+    public get ModConstitution(): number { return this.getCalculModCarac(this.Pconstitution);}
+    public get ModDexterite(): number { return this.getCalculModCarac(this.Pdexterite);}
+    public get ModIntelligence(): number { return this.getCalculModCarac(this.Pintelligence);}
+    public get ModSagesse(): number { return this.getCalculModCarac(this.Psagesse);}
+    public get ModCharisme(): number { return this.getCalculModCarac(this.Pcharisme);}
 
     public get CA(): number { 
         //Le 10 plus le demi niveau est ajouter dans le comparecarac()
@@ -160,15 +125,15 @@ export class Personnage extends BaseClass {
     }
     public get Vigueur(): number { 
         //Le 10 plus le demi niveau est ajouter dans le comparecarac()
-        return this.CompareCarac(this.ModForce, this.ModConstitution);
+        return this.CompareCarac(this.ModForce, this.ModConstitution) + this.classe.vigueur;
     }
     public get Reflexes(): number { 
         //Le 10 plus le demi niveau est ajouter dans le comparecarac()
-        return this.CompareCarac(this.ModDexterite, this.ModIntelligence);
+        return this.CompareCarac(this.ModDexterite, this.ModIntelligence) + this.classe.reflexe;
     }
     public get Volonte(): number { 
         //Le 10 plus le demi niveau est ajouter dans le comparecarac()
-        return this.CompareCarac(this.ModSagesse, this.ModCharisme);
+        return this.CompareCarac(this.ModSagesse, this.ModCharisme) + this.classe.volonte;
     }
     public CompareCarac(carac1: number, carac2: number): number {
         var caracRetour: number = 0;

@@ -1,17 +1,18 @@
 import { Personnage } from "./model/personnage.js";
 export function maFunction() {
-    console.log('jysuis3');
-    var testPerso = new Personnage(parseInt(document.getElementById('txtForce')?.value), parseInt(document.getElementById('txtConstitution')?.value), parseInt(document.getElementById('txtDexterite')?.value), parseInt(document.getElementById('txtIntelligence')?.value), parseInt(document.getElementById('txtSagesse')?.value), parseInt(document.getElementById('txtCharisme')?.value), parseInt(document.getElementById('txtPointExperience')?.value), document.getElementById('ddlRace')?.value);
+    //console.log('ici cest bien App');
+    //console.log((document.getElementById('ddlRace') as HTMLSelectElement)?.value);
+    var testPerso = new Personnage(parseInt(document.getElementById('txtForce')?.value), parseInt(document.getElementById('txtConstitution')?.value), parseInt(document.getElementById('txtDexterite')?.value), parseInt(document.getElementById('txtIntelligence')?.value), parseInt(document.getElementById('txtSagesse')?.value), parseInt(document.getElementById('txtCharisme')?.value), parseInt(document.getElementById('txtPointExperience')?.value), document.getElementById('ddlRace')?.value, document.getElementById('ddlClasse')?.value);
     console.log(document.getElementById('ddlRace')?.value);
     document.getElementById("spNiveau").innerHTML = testPerso.niveau.toString();
     document.getElementById("spVoieParangonique").innerHTML = testPerso.VoieParangonique.toString();
     document.getElementById("spDestineeEpique").innerHTML = testPerso.DestineeEpique.toString();
-    document.getElementById("spForce").innerHTML = testPerso.carac.force.toString();
-    document.getElementById("spConstitution").innerHTML = testPerso.carac.constitution.toString();
-    document.getElementById("spDexterite").innerHTML = testPerso.carac.dexterite.toString();
-    document.getElementById("spIntelligence").innerHTML = testPerso.carac.intelligence.toString();
-    document.getElementById("spSagesse").innerHTML = testPerso.carac.sagesse.toString();
-    document.getElementById("spCharisme").innerHTML = testPerso.carac.charisme.toString();
+    document.getElementById("spForce").innerHTML = testPerso.Pforce.toString();
+    document.getElementById("spConstitution").innerHTML = testPerso.Pconstitution.toString();
+    document.getElementById("spDexterite").innerHTML = testPerso.Pdexterite.toString();
+    document.getElementById("spIntelligence").innerHTML = testPerso.Pintelligence.toString();
+    document.getElementById("spSagesse").innerHTML = testPerso.Psagesse.toString();
+    document.getElementById("spCharisme").innerHTML = testPerso.Pcharisme.toString();
     document.getElementById("spCA").innerHTML = testPerso.CA.toString();
     document.getElementById("spVigueur").innerHTML = testPerso.Vigueur.toString();
     document.getElementById("spReflexes").innerHTML = testPerso.Reflexes.toString();

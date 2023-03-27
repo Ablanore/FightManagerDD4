@@ -1,4 +1,4 @@
-[
+export const RaceData = [
     {
         "IdRace": "0",
         "NomRace": "Choisir une race"
@@ -344,4 +344,4 @@
         "Taille": "M",
         "Vision": "Nocturne"
     }
-]
+];

@@ -1,3 +1,4 @@
+export const ClasseData = 
 [
     {
         "IdClasse": "0",

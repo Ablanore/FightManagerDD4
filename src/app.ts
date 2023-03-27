@@ -1,6 +1,7 @@
 import { Personnage } from "./model/personnage.js";
 export function maFunction() {
-    console.log('jysuis3');
+    //console.log('ici cest bien App');
+    //console.log((document.getElementById('ddlRace') as HTMLSelectElement)?.value);
     var testPerso = new Personnage(
         parseInt((document.getElementById('txtForce') as HTMLInputElement)?.value),
         parseInt((document.getElementById('txtConstitution') as HTMLInputElement)?.value),
@@ -10,17 +11,18 @@ export function maFunction() {
         parseInt((document.getElementById('txtCharisme') as HTMLInputElement)?.value),
         parseInt((document.getElementById('txtPointExperience') as HTMLInputElement)?.value)
         ,(document.getElementById('ddlRace') as HTMLSelectElement)?.value
+        ,(document.getElementById('ddlClasse') as HTMLSelectElement)?.value
     );
     console.log((document.getElementById('ddlRace') as HTMLSelectElement)?.value);    
     document.getElementById("spNiveau")!.innerHTML = testPerso.niveau.toString();
     document.getElementById("spVoieParangonique")!.innerHTML = testPerso.VoieParangonique.toString();
     document.getElementById("spDestineeEpique")!.innerHTML = testPerso.DestineeEpique.toString();
-    document.getElementById("spForce")!.innerHTML = testPerso.carac.force.toString();
-    document.getElementById("spConstitution")!.innerHTML = testPerso.carac.constitution.toString();
-    document.getElementById("spDexterite")!.innerHTML = testPerso.carac.dexterite.toString();
-    document.getElementById("spIntelligence")!.innerHTML = testPerso.carac.intelligence.toString();
-    document.getElementById("spSagesse")!.innerHTML = testPerso.carac.sagesse.toString();
-    document.getElementById("spCharisme")!.innerHTML = testPerso.carac.charisme.toString();
+    document.getElementById("spForce")!.innerHTML = testPerso.Pforce.toString();
+    document.getElementById("spConstitution")!.innerHTML = testPerso.Pconstitution.toString();
+    document.getElementById("spDexterite")!.innerHTML = testPerso.Pdexterite.toString();
+    document.getElementById("spIntelligence")!.innerHTML = testPerso.Pintelligence.toString();
+    document.getElementById("spSagesse")!.innerHTML = testPerso.Psagesse.toString();
+    document.getElementById("spCharisme")!.innerHTML = testPerso.Pcharisme.toString();
     document.getElementById("spCA")!.innerHTML = testPerso.CA.toString();
     document.getElementById("spVigueur")!.innerHTML = testPerso.Vigueur.toString();
     document.getElementById("spReflexes")!.innerHTML = testPerso.Reflexes.toString();
