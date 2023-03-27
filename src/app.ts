@@ -10,6 +10,7 @@ export function maFunction() {
         parseInt((document.getElementById('txtCharisme') as HTMLInputElement)?.value),
         parseInt((document.getElementById('txtPointExperience') as HTMLInputElement)?.value)
         ,(document.getElementById('ddlRace') as HTMLSelectElement)?.value
+        ,(document.getElementById('ddlClasse') as HTMLSelectElement)?.value
     );
     console.log((document.getElementById('ddlRace') as HTMLSelectElement)?.value);    
     document.getElementById("spNiveau")!.innerHTML = testPerso.niveau.toString();

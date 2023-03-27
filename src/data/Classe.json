@@ -19,6 +19,8 @@
   "Endurance": "x",
   "Intimidation": "x",
   "Soins": "x",
+  "Reflexe": 0,
+  "Volonte": 0,
   "Vigueur": 2
  },
  {
@@ -38,7 +40,9 @@
   "Intuition": "x",
   "Nature": "x",
   "Religion": "x",
-  "Volonte": 2
+  "Reflexe": 0,
+  "Volonte": 2,
+  "Vigueur": 0
  },
  {
   "IdClasse": "MaitreDeGuerre",
@@ -56,6 +60,7 @@
   "Histoire": "x",
   "Intimidation": "x",
   "Soins": "x",
+  "Reflexe": 0,
   "Volonte": 1,
   "Vigueur": 1
  },
@@ -96,7 +101,9 @@
   "Intuition": "x",
   "Religion": "o",
   "Soins": "x",
-  "Volonte": 2
+  "Reflexe": 0,
+  "Volonte": 2,
+  "Vigueur": 0
  },
  {
   "IdClasse": "Rodeur",
@@ -117,6 +124,7 @@
   "Perception": "x",
   "Soins": "x",
   "Reflexe": 1,
+  "Volonte": 0,
   "Vigueur": 1
  },
  {
@@ -138,7 +146,8 @@
   "Larcin": "x",
   "Religion": "x",
   "Reflexe": 1,
-  "Volonte": 1
+  "Volonte": 1,
+  "Vigueur": 0
  },
  {
   "IdClasse": "Voleur",
@@ -160,6 +169,8 @@
   "Intimidation": "x",
   "Larcin": "o",
   "Perception": "x",
-  "Reflexe": 2
+  "Reflexe": 2,
+  "Volonte": 0,
+  "Vigueur": 0
  }
 ]

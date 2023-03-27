@@ -34,69 +34,29 @@ const levelTable = [
     { experienceMin: 1000000, experienceMax: 1000000000, level: 30 }
 ];
 export class Personnage extends BaseClass {
-    constructor(force, constitution, dexterite, intelligence, sagesse, charisme, experience, idRace) {
+    constructor(force, constitution, dexterite, intelligence, sagesse, charisme, experience, idRace, idClasse) {
         super();
         this.idrace = "";
+        this.idclasse = "";
         this.race = new Race(this.idrace);
-        this.classe = new Classe();
+        this.classe = new Classe(this.idclasse);
         this.pointExperience = 0;
-        /*this.race = new Race(idRace)
-        this.carac.force = force + this.race.carac.force;
-        this.carac.constitution = constitution + this.race.carac.constitution;
-        this.carac.dexterite = dexterite + this.race.carac.dexterite;
-        this.carac.intelligence = intelligence + this.race.carac.intelligence;
-        this.carac.sagesse = sagesse + this.race.carac.sagesse;
-        this.carac.charisme = charisme + this.race.carac.charisme;
-        */
-        console.log('biloute' && this.race.carac.dexterite);
-        this.carac.force = force;
-        this.carac.constitution = constitution;
-        this.carac.dexterite = dexterite;
-        this.carac.intelligence = intelligence;
-        this.carac.sagesse = sagesse;
-        this.carac.charisme = charisme;
+        this.Bforce = 0;
+        this.Bconstitution = 0;
+        this.Bdexterite = 0;
+        this.Bintelligence = 0;
+        this.Bsagesse = 0;
+        this.Bcharisme = 0;
+        this.Bforce = force;
+        this.Bconstitution = constitution;
+        this.Bdexterite = dexterite;
+        this.Bintelligence = intelligence;
+        this.Bsagesse = sagesse;
+        this.Bcharisme = charisme;
         this.pointExperience = experience;
         this.idrace = idRace;
-        /*const raceSelect = document.getElementById("race") as HTMLSelectElement;
-        raceSelect.addEventListener("change", () => {
-        const raceName = raceSelect.value;
-        this.race = this.chargerRace(raceName);
-        this.calculerCaracteristiques();
-        }
-        );*/
-        // Charge la race par défaut
-        //this.race = this.chargerRace(raceSelect.value);
-        //this.calculerCaracteristiques();
+        this.idclasse = idClasse;
     }
-    /*
-        private chargerRace(nomRace: string): Race {
-            const races = this.chargerRaces();
-            const raceData = races[nomRace];
-            const race = new Race(this.idrace);
-            race.nom = raceData.nom;
-            race.carac = new Caracteristique(
-              raceData.carac.force,
-              raceData.carac.dexterite,
-              raceData.carac.constitution,
-              raceData.carac.intelligence,
-              raceData.carac.sagesse,
-              raceData.carac.charisme
-            );
-            return race;
-          }
-        
-          private chargerRaces(): { [key: string]: any } {
-            const xhr = new XMLHttpRequest();
-            xhr.open("GET", "races.json", false);
-            xhr.send();
-            return JSON.parse(xhr.responseText);
-          }
-        
-          private calculerCaracteristiques(): void {
-            // ... calcule les caractéristiques du personnage en fonction de la race
-          }
-    
-    */
     get niveau() { return this.getLevelFromExperience(this.pointExperience); }
     get demiNiveau() { return Math.floor(this.niveau / 2); }
     getLevelFromExperience(experience) {
@@ -134,27 +94,33 @@ export class Personnage extends BaseClass {
             return Math.floor((caractersitique-10)/2);
         } */
     }
-    get ModForce() { return this.getCalculModCarac(this.carac.force); }
-    get ModConstitution() { return this.getCalculModCarac(this.carac.constitution); }
-    get ModDexterite() { return this.getCalculModCarac(this.carac.dexterite); }
-    get ModIntelligence() { return this.getCalculModCarac(this.carac.intelligence); }
-    get ModSagesse() { return this.getCalculModCarac(this.carac.sagesse); }
-    get ModCharisme() { return this.getCalculModCarac(this.carac.charisme); }
+    get Pforce() { return this.Bforce + this.race.Rforce; }
+    get Pconstitution() { return this.Bconstitution + this.race.Rconstitution; }
+    get Pdexterite() { return this.Bdexterite + this.race.Rdexterite; }
+    get Pintelligence() { return this.Bintelligence + this.race.Rintelligence; }
+    get Psagesse() { return this.Bsagesse + this.race.Rsagesse; }
+    get Pcharisme() { return this.Bcharisme + this.race.Rcharisme; }
+    get ModForce() { return this.getCalculModCarac(this.Pforce); }
+    get ModConstitution() { return this.getCalculModCarac(this.Pconstitution); }
+    get ModDexterite() { return this.getCalculModCarac(this.Pdexterite); }
+    get ModIntelligence() { return this.getCalculModCarac(this.Pintelligence); }
+    get ModSagesse() { return this.getCalculModCarac(this.Psagesse); }
+    get ModCharisme() { return this.getCalculModCarac(this.Pcharisme); }
     get CA() {
         //Le 10 plus le demi niveau est ajouter dans le comparecarac()
         return this.CompareCarac(this.ModDexterite, this.ModIntelligence);
     }
     get Vigueur() {
         //Le 10 plus le demi niveau est ajouter dans le comparecarac()
-        return this.CompareCarac(this.ModForce, this.ModConstitution);
+        return this.CompareCarac(this.ModForce, this.ModConstitution) + this.classe.vigueur;
     }
     get Reflexes() {
         //Le 10 plus le demi niveau est ajouter dans le comparecarac()
-        return this.CompareCarac(this.ModDexterite, this.ModIntelligence);
+        return this.CompareCarac(this.ModDexterite, this.ModIntelligence) + this.classe.reflexe;
     }
     get Volonte() {
         //Le 10 plus le demi niveau est ajouter dans le comparecarac()
-        return this.CompareCarac(this.ModSagesse, this.ModCharisme);
+        return this.CompareCarac(this.ModSagesse, this.ModCharisme) + this.classe.volonte;
     }
     CompareCarac(carac1, carac2) {
         var caracRetour = 0;
