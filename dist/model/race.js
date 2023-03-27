@@ -1,6 +1,4 @@
 import { BaseClass } from "./baseclass.js";
-//import { Caracteristique } from "./caracteristique.js";
-//import dataRaces from "../../data/Race.json"; // chemin vers votre fichier races.json
 export class Race extends BaseClass {
     constructor(IdRace) {
         super();

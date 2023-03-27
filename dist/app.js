@@ -57,5 +57,5 @@ async function populateDropdownList(DDL, filePath, fileName, valueFieldName, tex
         console.error("Element with ID 'ddl' not found");
     }
 }
-populateDropdownList('ddlRace', '/data', 'Race.json', 'IdRace', 'NomRace');
-populateDropdownList('ddlClasse', '/data', 'Classe.json', 'IdClasse', 'NomClasse');
+populateDropdownList('ddlRace', '/dist/data', 'Race.json', 'IdRace', 'NomRace');
+populateDropdownList('ddlClasse', '/dist/data', 'Classe.json', 'IdClasse', 'NomClasse');

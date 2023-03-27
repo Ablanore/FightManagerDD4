@@ -13,8 +13,9 @@
         "src/app.ts"
     ],
     "include": [
-        "src/model/*.ts"
-, "src/model/race.ts"    ],
+        "src/model/*.ts",
+        "data/*.json"
+    ],
     "resolveJsonModule": true,
     "esModuleInterop": true
 }
