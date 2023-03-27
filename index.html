@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <script type="module" src="/dist/app.js"></script>
+    <link href="/style/style.css" type="text/css" rel="stylesheet">
+    <title>Document</title>    
+  </head>
+  <body>
+    Assistant de gestion de combat pour DD4
+    <div class="tabs">
+        <span data-tab-value="#tab_1">Création personnage</span>
+        <span data-tab-value="#tab_2">Gestion de combat</span>
+        <span data-tab-value="#tab_3">Autre</span>
+    </div>
+    <div class="tab-content">
+        <div class="tabs__tab active" id="tab_1" data-tab-info>
+          <div id="divGlobal" class="ligne">
+            <div class="container" id="divSaisie">
+                <div class="ligne">
+                    <div class="ligne">
+                        <label for="ddlRace">Race :</label>
+                        <select id="ddlRace"></select>
+                    </div>
+                    <div class="ligne">
+                        <label for="ddlClasse">Classe :</label>
+                        <select id="ddlClasse"></select>
+                    </div>
+                </div>
+                <h1>Les caratéristiques</h1>
+                <div class="ligne">
+                    <div class="Colonne1">Force : </div>
+                    <div class="Colonne2"><input type="text" id="txtForce"/></div>            
+                </div>
+                <div class="ligne">
+                    <div class="Colonne1">Constitution :</div>
+                    <div class="Colonne2"><input type="text" id="txtConstitution"/></div>
+                </div>
+                <div class="ligne">
+                    <div class="Colonne1">Dextérité : </div>
+                    <div class="Colonne2"><input type="text" id="txtDexterite"/></div>
+                </div>
+                <div class="ligne">
+                    <div class="Colonne1">Intelligence : </div>
+                    <div class="Colonne2"><input type="text" id="txtIntelligence"/></div>
+                </div>
+                <div class="ligne">
+                    <div class="Colonne1">Sagesse : </div>
+                    <div class="Colonne2"><input type="text" id="txtSagesse"/></div>
+                </div>
+                <div class="ligne">
+                    <div class="Colonne1">Charisme : </div>
+                    <div class="Colonne2"><input type="text" id="txtCharisme"/></div>
+                </div>
+                <div class="ligne">
+                    <div class="Colonne1">Point d'expérience : </div>
+                    <div class="Colonne2"><input type="text" id="txtPointExperience"/></div>
+                </div>
+                <div class="ligne">
+                    <div class="Colonne1"> </div>
+                    <div class="Colonne2"><input type="button" id="btnCreationPersonnage" onclick="maFunction();" value="Créer personnage"/></div>
+                </div>
+            </div>
+            <div id="divAffichage" class="ligne">
+                <div class="ligne"><b>Voici le résutat de la création du personnage</b></div>
+                <div class="ligne">
+                    <div class="Colonne1">Nom du personnage : </div>
+                    <div class="Colonne2"><span id="spNomPersonnage"></span></div>
+                </div>        
+                <div class="ligne">
+                    <div class="Colonne1">Race du personnage : </div>
+                    <div class="Colonne2"><span id="spRacePersonnage"></span></div>
+                </div>
+                <div class="ligne">
+                    <div class="Colonne1">Niveau : </div>
+                    <div class="Colonne2"><span id="spNiveau"></span></div>
+                </div>
+                <div class="ligne">
+                    <div class="Colonne1">Classe du personnage : </div>
+                    <div class="Colonne2"><span id="spClassePersonnage"></span></div>
+                </div>
+                <div class="ligne">
+                    <div class="Colonne1">Voie parangonique : </div>
+                    <div class="Colonne2"><span id="spVoieParangonique"></span></div>
+                </div>
+                <div class="ligne">
+                    <div class="Colonne1">Destinée épique : </div>
+                    <div class="Colonne2"><span id="spDestineeEpique"></span></div>
+                </div>
+                <div class="ligne"><b>Les Caractéristiques</b></div>
+                <div class="ligne">
+                    <div class="Colonne1">Force : </div>
+                    <div class="Colonne2"><span id="spForce"></span></div>
+                </div>
+                <div class="ligne">
+                    <div class="Colonne1">Constitution : </div>
+                    <div class="Colonne2"><span id="spConstitution"></span></div>
+                </div>
+                <div class="ligne">
+                    <div class="Colonne1">Dextérité : </div>
+                    <div class="Colonne2"><span id="spDexterite"></span></div>
+                </div>
+                <div class="ligne">
+                    <div class="Colonne1">Intelligence : </div>
+                    <div class="Colonne2"><span id="spIntelligence"></span></div>
+                </div>
+                <div class="ligne">
+                    <div class="Colonne1">Sagesse : </div>
+                    <div class="Colonne2"><span id="spSagesse"></span></div>
+                </div>
+                <div class="ligne">
+                    <div class="Colonne1">Charisme : </div>
+                    <div class="Colonne2"><span id="spCharisme"></span></div>
+                </div>
+                <div class="ligne"><b>Les Défenses</b></div>
+                <div class="ligne">
+                    <div class="Colonne1">Classe d'armure : </div>
+                    <div class="Colonne2"><span id="spCA"></span></div>
+                </div>
+                <div class="ligne">
+                    <div class="Colonne1">Vigueur : </div>
+                    <div class="Colonne2"><span id="spVigueur"></span></div>
+                </div>
+                <div class="ligne">
+                    <div class="Colonne1">Réflexes : </div>
+                    <div class="Colonne2"><span id="spReflexes"></span></div>
+                </div>
+                <div class="ligne">
+                    <div class="Colonne1">Volonté : </div>
+                    <div class="Colonne2"><span id="spVolonte"></span></div>
+                </div>
+                <div class="ligne"><b>Les autres trucs</b></div>
+                <div class="ligne">
+                    <div class="Colonne1">Initiative : </div>
+                    <div class="Colonne2"><span id="spInitiative"></span></div>
+                </div>
+                <div class="ligne">
+                    <div class="Colonne1">Vitesse : </div>
+                    <div class="Colonne2"><span id="spVitesse"></span></div>
+                </div>
+                <div class="ligne">
+                    <div class="Colonne1">Point de vie : </div>
+                    <div class="Colonne2"><span id="spPV"></span></div>
+                </div>
+                <div class="ligne">
+                    <div class="Colonne1">Péril : </div>
+                    <div class="Colonne2"><span id="spPéril"></span></div>
+                </div>
+                <div class="ligne">
+                    <div class="Colonne1">Récupération : </div>
+                    <div class="Colonne2"><span id="spRecuperation"></span></div>
+                </div>
+                <div class="ligne">
+                    <div class="Colonne1">Récupération par jour : </div>
+                    <div class="Colonne2"><span id="spRecuperationParjour"></span></div>
+                </div>
+                <div class="ligne"><b>Les non affichées</b></div>
+                <div class="ligne">
+                    <div class="Colonne1">1/2 Niveau : </div>
+                    <div class="Colonne2"><span id="spDemiNiveau"></span></div>
+                </div>
+                <div class="ligne">
+                    <div class="Colonne1">Modificateur de Force : </div>
+                    <div class="Colonne2"><span id="spModForce"></span></div>
+                </div>
+                <div class="ligne">
+                    <div class="Colonne1">Modificateur de Constitution : </div>
+                    <div class="Colonne2"><span id="spModConstitution"></span></div>
+                </div>
+                <div class="ligne">
+                    <div class="Colonne1">Modificateur de Dextérité : </div>
+                    <div class="Colonne2"><span id="spModDexterite"></span></div>
+                </div>
+                <div class="ligne">
+                    <div class="Colonne1">Modificateur d'Intelligence : </div>
+                    <div class="Colonne2"><span id="spModIntelligence"></span></div>
+                </div>
+                <div class="ligne">
+                    <div class="Colonne1">Modificateur de Sagesse : </div>
+                    <div class="Colonne2"><span id="spModSagesse"></span></div>
+                </div>
+                <div class="ligne">
+                    <div class="Colonne1">Modificateur de Charisme : </div>
+                    <div class="Colonne2"><span id="spModCharisme"></span></div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="tabs__tab" id="tab_2" data-tab-info>
+          <div>Ici c'est le TAB 2</div>
+        </div>
+        <div class="tabs__tab" id="tab_3" data-tab-info>
+          <div>ici c'est le TAB 3</div>
+        </div>
+    </div>
+    <script type="module" src="/dist/model/menutabs.js"></script>
+  </body>
+</html>
