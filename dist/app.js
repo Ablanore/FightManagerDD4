@@ -1,4 +1,6 @@
 import { Personnage } from "./model/personnage.js";
+import { RaceData } from "./data/RaceData.js";
+import { ClasseData } from "./data/ClasseData.js";
 export function maFunction() {
     //console.log('ici cest bien App');
     //console.log((document.getElementById('ddlRace') as HTMLSelectElement)?.value);
@@ -31,19 +33,13 @@ export function maFunction() {
     document.getElementById("spModCharisme").innerHTML = testPerso.ModCharisme.toString();
 }
 window.maFunction = maFunction;
-async function loadDataFromFile(filePath, fileName, valueFieldName, textFieldName) {
-    const response = await fetch(`${filePath}/${fileName}`);
-    const jsonData = await response.json();
-    const htmlData = jsonData.map((data) => {
+async function populateDropdownList(DDL, dataSource, valueFieldName, textFieldName) {
+    const htmlData = dataSource.map((data) => {
         return {
             HTMLValue: data[valueFieldName],
             HTMLText: data[textFieldName],
         };
     });
-    return htmlData;
-}
-async function populateDropdownList(DDL, filePath, fileName, valueFieldName, textFieldName) {
-    const htmlData = await loadDataFromFile(filePath, fileName, valueFieldName, textFieldName);
     const ddlARemplir = document.getElementById(DDL);
     if (ddlARemplir !== null) {
         htmlData.forEach((item) => {
@@ -57,5 +53,5 @@ async function populateDropdownList(DDL, filePath, fileName, valueFieldName, tex
         console.error("Element with ID 'ddl' not found");
     }
 }
-populateDropdownList('ddlRace', '/dist/data', 'Race.json', 'IdRace', 'NomRace');
-populateDropdownList('ddlClasse', '/dist/data', 'Classe.json', 'IdClasse', 'NomClasse');
+populateDropdownList('ddlRace', RaceData, 'IdRace', 'NomRace');
+populateDropdownList('ddlClasse', ClasseData, 'IdClasse', 'NomClasse');

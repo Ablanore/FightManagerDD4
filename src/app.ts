@@ -1,4 +1,7 @@
 import { Personnage } from "./model/personnage.js";
+import { RaceData } from "./data/RaceData.js";
+import { ClasseData } from "./data/ClasseData.js";
+
 export function maFunction() {
     //console.log('ici cest bien App');
     //console.log((document.getElementById('ddlRace') as HTMLSelectElement)?.value);
@@ -45,23 +48,16 @@ interface HTMLData {
   HTMLValue: string;
   HTMLText: string;
 }
-async function loadDataFromFile(filePath: string, fileName: string, valueFieldName: string, textFieldName: string): Promise<HTMLData[]> {
-  const response = await fetch(`${filePath}/${fileName}`);
-  const jsonData = await response.json();
-  const htmlData = jsonData.map((data: any) => {
+async function populateDropdownList(DDL: string, dataSource:any, valueFieldName: string, textFieldName: string): Promise<void> {
+  const htmlData = dataSource.map((data: any) => {
     return {
       HTMLValue: data[valueFieldName],
       HTMLText: data[textFieldName],
     };
   });
-  return htmlData;
-}
-async function populateDropdownList(DDL: string, filePath: string, fileName: string, valueFieldName: string, textFieldName: string): Promise<void> {
-          
-  const htmlData = await loadDataFromFile(filePath, fileName, valueFieldName, textFieldName);
   const ddlARemplir = document.getElementById(DDL) as HTMLSelectElement;
   if (ddlARemplir !== null) {
-      htmlData.forEach((item) => {
+      htmlData.forEach((item: any) => {
       const option = document.createElement('option');
       option.value = item.HTMLValue;
       option.text = item.HTMLText;
@@ -71,5 +67,5 @@ async function populateDropdownList(DDL: string, filePath: string, fileName: str
     console.error("Element with ID 'ddl' not found");
   }    
 }
-populateDropdownList('ddlRace', '/dist/data', 'Race.json', 'IdRace', 'NomRace');
-populateDropdownList('ddlClasse', '/dist/data', 'Classe.json', 'IdClasse', 'NomClasse');
+populateDropdownList('ddlRace', RaceData, 'IdRace', 'NomRace');
+populateDropdownList('ddlClasse', ClasseData, 'IdClasse', 'NomClasse');
