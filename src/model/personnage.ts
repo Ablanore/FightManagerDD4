@@ -41,6 +41,7 @@ const levelTable: LevelData[] = [
 export class Personnage {
     private idrace: string = "";
     private idclasse: string = "";
+    public nomPersonnage: string = "";
     public race: Race;
     public classe: Classe;
     public pointExperience: number = 0;

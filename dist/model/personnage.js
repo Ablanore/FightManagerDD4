@@ -36,6 +36,7 @@ export class Personnage {
     constructor(force, constitution, dexterite, intelligence, sagesse, charisme, experience, idRace, idClasse) {
         this.idrace = "";
         this.idclasse = "";
+        this.nomPersonnage = "";
         this.pointExperience = 0;
         this.Bforce = 0;
         this.Bconstitution = 0;

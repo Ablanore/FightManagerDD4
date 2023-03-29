@@ -1,8 +1,7 @@
-import { BaseClass } from "./baseclass.js";
 import { RaceData } from "../data/RaceData.js";
-export class Race extends BaseClass {
+export class Race {
     constructor(IdRace) {
-        super();
+        this.nomRace = "";
         this.Rforce = 0;
         this.Rconstitution = 0;
         this.Rdexterite = 0;
@@ -13,7 +12,7 @@ export class Race extends BaseClass {
         //console.log(IdRace);
         const raceData = RaceData.find((race) => race.IdRace === IdRace);
         if (raceData) {
-            this.nom = raceData.NomRace !== undefined ? raceData.NomRace : "";
+            this.nomRace = raceData.NomRace !== undefined ? raceData.NomRace : "";
             this.Rforce = raceData.Force !== undefined ? raceData.Force : 0;
             this.Rconstitution = raceData.Constitution !== undefined ? raceData.Constitution : 0;
             this.Rdexterite = raceData.Dexterite !== undefined ? raceData.Dexterite : 0;

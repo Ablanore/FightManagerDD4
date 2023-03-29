@@ -1,9 +1,6 @@
-import { BaseClass } from "./baseclass.js";
 import { ClasseData } from "../data/ClasseData.js";
-export class Classe extends BaseClass {
+export class Classe {
     constructor(IdClasse) {
-        super();
-        //public IdClasse: string = ""
         this.nomClasse = "";
         this.pointVieBase = 0;
         this.pointVieNiveau = 0;

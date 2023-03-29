@@ -1,7 +1,5 @@
-import { BaseClass } from "./baseclass.js";
 import { ClasseData } from "../data/ClasseData.js";
-export class Classe extends BaseClass {
-    //public IdClasse: string = ""
+export class Classe {    
     public nomClasse: string = ""
     public pointVieBase: number = 0
     public pointVieNiveau: number = 0
@@ -12,7 +10,6 @@ export class Classe extends BaseClass {
     public vigueur: number = 0
 
     constructor(IdClasse: string) {
-        super();
         const classeData = ClasseData.find((classe) => classe.IdClasse === IdClasse);
         if (classeData) {
             this.nomClasse = classeData.NomClasse !== undefined ? classeData.NomClasse : "";

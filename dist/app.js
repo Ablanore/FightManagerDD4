@@ -3,7 +3,6 @@ export function maFunction() {
     //console.log('ici cest bien App');
     //console.log((document.getElementById('ddlRace') as HTMLSelectElement)?.value);
     var testPerso = new Personnage(parseInt(document.getElementById('txtForce')?.value), parseInt(document.getElementById('txtConstitution')?.value), parseInt(document.getElementById('txtDexterite')?.value), parseInt(document.getElementById('txtIntelligence')?.value), parseInt(document.getElementById('txtSagesse')?.value), parseInt(document.getElementById('txtCharisme')?.value), parseInt(document.getElementById('txtPointExperience')?.value), document.getElementById('ddlRace')?.value, document.getElementById('ddlClasse')?.value);
-    console.log(document.getElementById('ddlRace')?.value);
     document.getElementById("spNiveau").innerHTML = testPerso.niveau.toString();
     document.getElementById("spVoieParangonique").innerHTML = testPerso.VoieParangonique.toString();
     document.getElementById("spDestineeEpique").innerHTML = testPerso.DestineeEpique.toString();

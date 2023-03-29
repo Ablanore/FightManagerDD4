@@ -13,7 +13,6 @@ export function maFunction() {
         ,(document.getElementById('ddlRace') as HTMLSelectElement)?.value
         ,(document.getElementById('ddlClasse') as HTMLSelectElement)?.value
     );
-    console.log((document.getElementById('ddlRace') as HTMLSelectElement)?.value);    
     document.getElementById("spNiveau")!.innerHTML = testPerso.niveau.toString();
     document.getElementById("spVoieParangonique")!.innerHTML = testPerso.VoieParangonique.toString();
     document.getElementById("spDestineeEpique")!.innerHTML = testPerso.DestineeEpique.toString();
