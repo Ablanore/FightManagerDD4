@@ -147,4 +147,22 @@ export class Personnage {
     public get Vitesse(): number { return 0;}
     public get VoieParangonique(): number { return 0;}
     public get DestineeEpique(): number { return 0;}
+    //Les Compétences : 1/2 niveau + mod carac + formation + Mod racial + divers - pénlité armure
+    public get PAcrobaties(): number { return this.demiNiveau + this.Pdexterite + this.race.RAcrobaties;}
+    public get PArcanes(): number { return this.demiNiveau + this.Pintelligence + this.race.RArcanes;}
+    public get PAthletisme(): number { return this.demiNiveau + this.Pforce + this.race.RAthletisme;}
+    public get PBluff(): number { return this.demiNiveau + this.Pcharisme + this.race.RBluff;}
+    public get PConnDeLaRue(): number { return this.demiNiveau + this.Pcharisme + this.race.RConnDeLaRue;}
+    public get PDiplomatie(): number { return this.demiNiveau + this.Pcharisme + this.race.RDiplomatie;}
+    public get PDiscretion(): number { return this.demiNiveau + this.Pdexterite + this.race.RDiscretion;}
+    public get PEndurance(): number { return this.demiNiveau + this.Pconstitution + this.race.REndurance;}
+    public get PExploration(): number { return this.demiNiveau + this.Psagesse + this.race.RExploration;}
+    public get PHistoire(): number { return this.demiNiveau + this.Pintelligence + this.race.RHistoire;}
+    public get PIntuition(): number { return this.demiNiveau + this.Psagesse + this.race.RIntuition;}
+    public get PIntimidation(): number { return this.demiNiveau + this.Pcharisme + this.race.RIntimidation;}
+    public get PLarcin(): number { return this.demiNiveau + this.Pdexterite + this.race.RLarcin;}
+    public get PNature(): number { return this.demiNiveau + this.Psagesse + this.race.RNature;}
+    public get PPerception(): number { return this.demiNiveau + this.Psagesse + this.race.RPerception;}
+    public get PReligion(): number { return this.demiNiveau + this.Pintelligence + this.race.RReligion;}
+    public get PSoins(): number { return this.demiNiveau + this.Psagesse + this.race.RSoins;}
 }

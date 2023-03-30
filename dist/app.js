@@ -55,3 +55,28 @@ async function populateDropdownList(DDL, dataSource, valueFieldName, textFieldNa
 }
 populateDropdownList('ddlRace', RaceData, 'IdRace', 'NomRace');
 populateDropdownList('ddlClasse', ClasseData, 'IdClasse', 'NomClasse');
+document.getElementById('ddlClasse').onchange = function (monEvent) {
+    const divComp = document.getElementById('chkCompetence');
+    divComp.replaceChildren();
+    console.log(monEvent);
+    const choixIdClasse = monEvent.target.selectedOptions[0].value;
+    const choixClasse = ClasseData.find(classe => classe.IdClasse === choixIdClasse);
+    const comptenceClasse = Object.entries(choixClasse?.Competence);
+    comptenceClasse.forEach((item) => {
+        const caseAcocher = document.createElement('input');
+        caseAcocher.type = 'checkbox';
+        caseAcocher.id = "id" + item[0];
+        caseAcocher.name = "nom" + item[0];
+        if (item[1] === 'o') {
+            caseAcocher.checked = true;
+            caseAcocher.disabled = true;
+        }
+        divComp.appendChild(caseAcocher);
+        const labelCHK = document.createElement('label');
+        labelCHK.textContent = item[0];
+        labelCHK.htmlFor = caseAcocher.id;
+        divComp.appendChild(labelCHK);
+        const leBR = document.createElement('br');
+        divComp.appendChild(leBR);
+    });
+};

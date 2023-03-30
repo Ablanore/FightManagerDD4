@@ -9,17 +9,17 @@ export const ClasseData = [
         "PointVieBase": 15,
         "PointVieNiveau": 6,
         "Recuperation": 9,
-        "Force": 1,
-        "Constitution": 4,
-        "Dexterite": 2,
-        "Sagesse": 3,
+        "Reflexe": 0,
+        "Volonte": 0,
+        "Vigueur": 2,
         "NombreCompetence": 3,
-        "Athletisme": "x",
-        "ConnDeLaRue": "x",
-        "Endurance": "x",
-        "Intimidation": "x",
-        "Soins": "x",
-        "Vigueur": 2
+        "Competence": {
+            "Athletisme": "x",
+            "ConnDeLaRue": "o",
+            "Endurance": "x",
+            "Intimidation": "x",
+            "Soins": "x"
+        }
     },
     {
         "IdClasse": "Magicien",
@@ -27,18 +27,19 @@ export const ClasseData = [
         "PointVieBase": 10,
         "PointVieNiveau": 4,
         "Recuperation": 6,
-        "Dexterite": 3,
-        "Intelligence": 1,
-        "Sagesse": 2,
+        "Reflexe": 0,
+        "Volonte": 2,
+        "Vigueur": 0,
         "NombreCompetence": 3,
-        "Arcanes": "o",
-        "Diplomatie": "x",
-        "Exploration": "x",
-        "Histoire": "x",
-        "Intuition": "x",
-        "Nature": "x",
-        "Religion": "x",
-        "Volonte": 2
+        "Competence": {
+            "Arcanes": "o",
+            "Diplomatie": "x",
+            "Exploration": "x",
+            "Histoire": "x",
+            "Intuition": "x",
+            "Nature": "x",
+            "Religion": "x"
+        }
     },
     {
         "IdClasse": "MaitreDeGuerre",
@@ -46,18 +47,16 @@ export const ClasseData = [
         "PointVieBase": 12,
         "PointVieNiveau": 5,
         "Recuperation": 7,
-        "Force": 1,
-        "Intelligence": 2,
-        "Charisme": 3,
+        "Reflexe": 0,
+        "Volonte": 1,
+        "Vigueur": 1,
         "NombreCompetence": 4,
         "Athletisme": "x",
         "Diplomatie": "x",
         "Endurance": "x",
         "Histoire": "x",
         "Intimidation": "x",
-        "Soins": "x",
-        "Volonte": 1,
-        "Vigueur": 1
+        "Soins": "x"
     },
     {
         "IdClasse": "Paladin",
@@ -65,9 +64,9 @@ export const ClasseData = [
         "PointVieBase": 15,
         "PointVieNiveau": 6,
         "Recuperation": 10,
-        "Force": 1,
-        "Sagesse": 3,
-        "Charisme": 2,
+        "Reflexe": 1,
+        "Volonte": 1,
+        "Vigueur": 1,
         "NombreCompetence": 3,
         "Diplomatie": "x",
         "Endurance": "x",
@@ -75,10 +74,7 @@ export const ClasseData = [
         "Intuition": "x",
         "Intimidation": "x",
         "Religion": "o",
-        "Soins": "x",
-        "Reflexe": 1,
-        "Volonte": 1,
-        "Vigueur": 1
+        "Soins": "x"
     },
     {
         "IdClasse": "Pretre",
@@ -86,17 +82,16 @@ export const ClasseData = [
         "PointVieBase": 12,
         "PointVieNiveau": 5,
         "Recuperation": 7,
-        "Force": 2,
-        "Sagesse": 1,
-        "Charisme": 3,
+        "Reflexe": 0,
+        "Volonte": 2,
+        "Vigueur": 0,
         "NombreCompetence": 3,
         "Arcanes": "x",
         "Diplomatie": "x",
         "Histoire": "x",
         "Intuition": "x",
         "Religion": "o",
-        "Soins": "x",
-        "Volonte": 2
+        "Soins": "x"
     },
     {
         "IdClasse": "Rodeur",
@@ -104,9 +99,9 @@ export const ClasseData = [
         "PointVieBase": 12,
         "PointVieNiveau": 5,
         "Recuperation": 6,
-        "Force": 1,
-        "Dexterite": 2,
-        "Sagesse": 3,
+        "Reflexe": 1,
+        "Volonte": 0,
+        "Vigueur": 1,
         "NombreCompetence": 4,
         "Acrobaties": "x",
         "Athletisme": "x",
@@ -115,9 +110,7 @@ export const ClasseData = [
         "Exploration": "c",
         "Nature": "c",
         "Perception": "x",
-        "Soins": "x",
-        "Reflexe": 1,
-        "Vigueur": 1
+        "Soins": "x"
     },
     {
         "IdClasse": "Sorcier",
@@ -125,9 +118,9 @@ export const ClasseData = [
         "PointVieBase": 12,
         "PointVieNiveau": 5,
         "Recuperation": 6,
-        "Constitution": 2,
-        "Intelligence": 3,
-        "Charisme": 1,
+        "Reflexe": 1,
+        "Volonte": 1,
+        "Vigueur": 0,
         "NombreCompetence": 4,
         "Arcanes": "x",
         "Bluff": "x",
@@ -136,9 +129,7 @@ export const ClasseData = [
         "Intuition": "x",
         "Intimidation": "x",
         "Larcin": "x",
-        "Religion": "x",
-        "Reflexe": 1,
-        "Volonte": 1
+        "Religion": "x"
     },
     {
         "IdClasse": "Voleur",
@@ -146,9 +137,9 @@ export const ClasseData = [
         "PointVieBase": 12,
         "PointVieNiveau": 5,
         "Recuperation": 6,
-        "Force": 2,
-        "Dexterite": 1,
-        "Charisme": 3,
+        "Reflexe": 2,
+        "Volonte": 0,
+        "Vigueur": 0,
         "NombreCompetence": 4,
         "Acrobaties": "x",
         "Athletisme": "x",
@@ -159,7 +150,6 @@ export const ClasseData = [
         "Intuition": "x",
         "Intimidation": "x",
         "Larcin": "o",
-        "Perception": "x",
-        "Reflexe": 2
+        "Perception": "x"
     }
 ];

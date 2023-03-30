@@ -48,7 +48,7 @@ interface HTMLData {
   HTMLValue: string;
   HTMLText: string;
 }
-async function populateDropdownList(DDL: string, dataSource:any, valueFieldName: string, textFieldName: string): Promise<void> {
+async function populateDropdownList(DDL: string, dataSource: any, valueFieldName: string, textFieldName: string): Promise<void> {
   const htmlData = dataSource.map((data: any) => {
     return {
       HTMLValue: data[valueFieldName],
@@ -69,3 +69,29 @@ async function populateDropdownList(DDL: string, dataSource:any, valueFieldName:
 }
 populateDropdownList('ddlRace', RaceData, 'IdRace', 'NomRace');
 populateDropdownList('ddlClasse', ClasseData, 'IdClasse', 'NomClasse');
+
+(document.getElementById('ddlClasse') as HTMLSelectElement)!.onchange = function(monEvent: any) {
+  const divComp = document.getElementById('chkCompetence') as HTMLDivElement;
+  divComp.replaceChildren();
+  console.log(monEvent);
+  const choixIdClasse = monEvent.target.selectedOptions[0].value;
+  const choixClasse = ClasseData.find(classe => classe.IdClasse === choixIdClasse);  
+  const comptenceClasse = Object.entries(choixClasse?.Competence as any);
+  comptenceClasse.forEach((item: any) => {
+    const caseAcocher = document.createElement('input');
+    caseAcocher.type = 'checkbox';
+    caseAcocher.id = "id" + item[0];
+    caseAcocher.name = "nom" + item[0];
+    if (item[1] === 'o') {
+      caseAcocher.checked = true;
+      caseAcocher.disabled = true;
+    }
+    divComp.appendChild(caseAcocher);
+    const labelCHK = document.createElement('label') as HTMLLabelElement;
+    labelCHK.textContent = item[0];
+    labelCHK.htmlFor = caseAcocher.id;
+    divComp.appendChild(labelCHK);
+    const leBR = document.createElement('br');
+    divComp.appendChild(leBR);
+  })
+};
