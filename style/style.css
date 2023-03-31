@@ -32,23 +32,21 @@ body {
     color: black;
 }
 /*portion de CSS perso de la première fournée*/
-
 .Colonne1,
-.Colonne2 {
+.Colonne2,
+.Colonne3 {
   display: inline-block;
 }
-
 .Colonne1 {
-    width: 200px;
+    width: 300px;
     /*border: 1px solid rgb(255, 0, 0);*/
-    
 }
 .Colonne2 {
-    width: 150px;
+    width: 500px;
     /*border: 1px solid rgb(0, 0, 255);*/
 }
 .Colonne3 {
-    width: 50px;
+    width: 500px;
     /*border: 1px solid rgb(0, 255, 128);*/
 }
 .ligne {

@@ -147,22 +147,40 @@ export class Personnage {
     public get Vitesse(): number { return 0;}
     public get VoieParangonique(): number { return 0;}
     public get DestineeEpique(): number { return 0;}
-    //Les Compétences : 1/2 niveau + mod carac + formation + Mod racial + divers - pénlité armure
-    public get PAcrobaties(): number { return this.demiNiveau + this.Pdexterite + this.race.RAcrobaties;}
-    public get PArcanes(): number { return this.demiNiveau + this.Pintelligence + this.race.RArcanes;}
-    public get PAthletisme(): number { return this.demiNiveau + this.Pforce + this.race.RAthletisme;}
-    public get PBluff(): number { return this.demiNiveau + this.Pcharisme + this.race.RBluff;}
-    public get PConnDeLaRue(): number { return this.demiNiveau + this.Pcharisme + this.race.RConnDeLaRue;}
-    public get PDiplomatie(): number { return this.demiNiveau + this.Pcharisme + this.race.RDiplomatie;}
-    public get PDiscretion(): number { return this.demiNiveau + this.Pdexterite + this.race.RDiscretion;}
-    public get PEndurance(): number { return this.demiNiveau + this.Pconstitution + this.race.REndurance;}
-    public get PExploration(): number { return this.demiNiveau + this.Psagesse + this.race.RExploration;}
-    public get PHistoire(): number { return this.demiNiveau + this.Pintelligence + this.race.RHistoire;}
-    public get PIntuition(): number { return this.demiNiveau + this.Psagesse + this.race.RIntuition;}
-    public get PIntimidation(): number { return this.demiNiveau + this.Pcharisme + this.race.RIntimidation;}
-    public get PLarcin(): number { return this.demiNiveau + this.Pdexterite + this.race.RLarcin;}
-    public get PNature(): number { return this.demiNiveau + this.Psagesse + this.race.RNature;}
-    public get PPerception(): number { return this.demiNiveau + this.Psagesse + this.race.RPerception;}
-    public get PReligion(): number { return this.demiNiveau + this.Pintelligence + this.race.RReligion;}
-    public get PSoins(): number { return this.demiNiveau + this.Psagesse + this.race.RSoins;}
+    //Les Compétences : 1/2 niveau + mod carac + formation + Mod racial + divers - pénalité armure
+    public FAcrobaties: number = 0
+    public FArcanes: number = 0
+    public FAthletisme: number = 0
+    public FBluff: number = 0 
+    public FConnDeLaRue: number = 0
+    public FDiplomatie: number = 0
+    public FDiscretion: number = 0 
+    public FEndurance: number = 0
+    public FExploration: number = 0
+    public FHistoire: number = 0
+    public FIntuition: number = 0 
+    public FIntimidation: number = 0 
+    public FLarcin: number = 0 
+    public FNature: number = 0
+    public FPerception: number = 0
+    public FReligion: number = 0
+    public FSoins: number = 0
+    //Les Compétences : 1/2 niveau + mod carac + formation + Mod racial + divers - pénalité armure
+    public get PAcrobaties(): number { return 0 + this.demiNiveau + this.ModDexterite + this.FAcrobaties + this.race.RAcrobaties;}
+    public get PArcanes(): number { return 0 + this.demiNiveau + this.ModIntelligence + this.FArcanes + this.race.RArcanes;}
+    public get PAthletisme(): number { return 0 + this.demiNiveau + this.ModForce + this.FAthletisme + this.race.RAthletisme;}
+    public get PBluff(): number { return 0 + this.demiNiveau + this.ModCharisme + this.FBluff + this.race.RBluff;}
+    public get PConnDeLaRue(): number { return 0 + this.demiNiveau + this.ModCharisme + this.FConnDeLaRue + this.race.RConnDeLaRue;}
+    public get PDiplomatie(): number { return 0 + this.demiNiveau + this.ModCharisme + this.FDiplomatie + this.race.RDiplomatie;}
+    public get PDiscretion(): number { return 0 + this.demiNiveau + this.ModDexterite + this.FDiscretion + this.race.RDiscretion;}
+    public get PEndurance(): number { return 0 + this.demiNiveau + this.ModConstitution + this.FEndurance + this.race.REndurance;}
+    public get PExploration(): number { return 0 + this.demiNiveau + this.ModSagesse + this.FExploration + this.race.RExploration;}
+    public get PHistoire(): number { return 0 + this.demiNiveau + this.ModIntelligence + this.FHistoire + this.race.RHistoire;}
+    public get PIntuition(): number { return 0 + this.demiNiveau + this.ModSagesse + this.FIntuition + this.race.RIntuition;}
+    public get PIntimidation(): number { return 0 + this.demiNiveau + this.ModCharisme + this.FIntimidation + this.race.RIntimidation;}
+    public get PLarcin(): number { return 0 + this.demiNiveau + this.ModDexterite + this.FLarcin + this.race.RLarcin;}
+    public get PNature(): number { return 0 + this.demiNiveau + this.ModSagesse + this.FNature + this.race.RNature;}
+    public get PPerception(): number { return 0 + this.demiNiveau + this.ModSagesse + this.FPerception + this.race.RPerception;}
+    public get PReligion(): number { return 0 + this.demiNiveau + this.ModIntelligence + this.FReligion + this.race.RReligion;}
+    public get PSoins(): number { return 0 + this.demiNiveau + this.ModSagesse + this.FSoins + this.race.RSoins;}
 }

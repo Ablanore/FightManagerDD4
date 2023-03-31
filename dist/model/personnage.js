@@ -44,6 +44,24 @@ export class Personnage {
         this.Bintelligence = 0;
         this.Bsagesse = 0;
         this.Bcharisme = 0;
+        //Les Compétences : 1/2 niveau + mod carac + formation + Mod racial + divers - pénalité armure
+        this.FAcrobaties = 0;
+        this.FArcanes = 0;
+        this.FAthletisme = 0;
+        this.FBluff = 0;
+        this.FConnDeLaRue = 0;
+        this.FDiplomatie = 0;
+        this.FDiscretion = 0;
+        this.FEndurance = 0;
+        this.FExploration = 0;
+        this.FHistoire = 0;
+        this.FIntuition = 0;
+        this.FIntimidation = 0;
+        this.FLarcin = 0;
+        this.FNature = 0;
+        this.FPerception = 0;
+        this.FReligion = 0;
+        this.FSoins = 0;
         //console.log('ici cest bien Personnage');
         //console.log(idRace);
         this.Bforce = force;
@@ -137,22 +155,22 @@ export class Personnage {
     get Vitesse() { return 0; }
     get VoieParangonique() { return 0; }
     get DestineeEpique() { return 0; }
-    //Les Compétences : 1/2 niveau + mod carac + formation + Mod racial + divers - pénlité armure
-    get PAcrobaties() { return this.demiNiveau + this.Pdexterite + this.race.RAcrobaties; }
-    get PArcanes() { return this.demiNiveau + this.Pintelligence + this.race.RArcanes; }
-    get PAthletisme() { return this.demiNiveau + this.Pforce + this.race.RAthletisme; }
-    get PBluff() { return this.demiNiveau + this.Pcharisme + this.race.RBluff; }
-    get PConnDeLaRue() { return this.demiNiveau + this.Pcharisme + this.race.RConnDeLaRue; }
-    get PDiplomatie() { return this.demiNiveau + this.Pcharisme + this.race.RDiplomatie; }
-    get PDiscretion() { return this.demiNiveau + this.Pdexterite + this.race.RDiscretion; }
-    get PEndurance() { return this.demiNiveau + this.Pconstitution + this.race.REndurance; }
-    get PExploration() { return this.demiNiveau + this.Psagesse + this.race.RExploration; }
-    get PHistoire() { return this.demiNiveau + this.Pintelligence + this.race.RHistoire; }
-    get PIntuition() { return this.demiNiveau + this.Psagesse + this.race.RIntuition; }
-    get PIntimidation() { return this.demiNiveau + this.Pcharisme + this.race.RIntimidation; }
-    get PLarcin() { return this.demiNiveau + this.Pdexterite + this.race.RLarcin; }
-    get PNature() { return this.demiNiveau + this.Psagesse + this.race.RNature; }
-    get PPerception() { return this.demiNiveau + this.Psagesse + this.race.RPerception; }
-    get PReligion() { return this.demiNiveau + this.Pintelligence + this.race.RReligion; }
-    get PSoins() { return this.demiNiveau + this.Psagesse + this.race.RSoins; }
+    //Les Compétences : 1/2 niveau + mod carac + formation + Mod racial + divers - pénalité armure
+    get PAcrobaties() { return 0 + this.demiNiveau + this.ModDexterite + this.FAcrobaties + this.race.RAcrobaties; }
+    get PArcanes() { return 0 + this.demiNiveau + this.ModIntelligence + this.FArcanes + this.race.RArcanes; }
+    get PAthletisme() { return 0 + this.demiNiveau + this.ModForce + this.FAthletisme + this.race.RAthletisme; }
+    get PBluff() { return 0 + this.demiNiveau + this.ModCharisme + this.FBluff + this.race.RBluff; }
+    get PConnDeLaRue() { return 0 + this.demiNiveau + this.ModCharisme + this.FConnDeLaRue + this.race.RConnDeLaRue; }
+    get PDiplomatie() { return 0 + this.demiNiveau + this.ModCharisme + this.FDiplomatie + this.race.RDiplomatie; }
+    get PDiscretion() { return 0 + this.demiNiveau + this.ModDexterite + this.FDiscretion + this.race.RDiscretion; }
+    get PEndurance() { return 0 + this.demiNiveau + this.ModConstitution + this.FEndurance + this.race.REndurance; }
+    get PExploration() { return 0 + this.demiNiveau + this.ModSagesse + this.FExploration + this.race.RExploration; }
+    get PHistoire() { return 0 + this.demiNiveau + this.ModIntelligence + this.FHistoire + this.race.RHistoire; }
+    get PIntuition() { return 0 + this.demiNiveau + this.ModSagesse + this.FIntuition + this.race.RIntuition; }
+    get PIntimidation() { return 0 + this.demiNiveau + this.ModCharisme + this.FIntimidation + this.race.RIntimidation; }
+    get PLarcin() { return 0 + this.demiNiveau + this.ModDexterite + this.FLarcin + this.race.RLarcin; }
+    get PNature() { return 0 + this.demiNiveau + this.ModSagesse + this.FNature + this.race.RNature; }
+    get PPerception() { return 0 + this.demiNiveau + this.ModSagesse + this.FPerception + this.race.RPerception; }
+    get PReligion() { return 0 + this.demiNiveau + this.ModIntelligence + this.FReligion + this.race.RReligion; }
+    get PSoins() { return 0 + this.demiNiveau + this.ModSagesse + this.FSoins + this.race.RSoins; }
 }

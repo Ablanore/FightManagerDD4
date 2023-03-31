@@ -27,52 +27,72 @@
                             <label for="ddlClasse">Classe :</label>
                             <select id="ddlClasse"></select>
                         </div>
+                        <h1>Les caratéristiques</h1>
+                        <div class="ligne">
+                            <div class="Colonne1">Force : </div>
+                            <div class="Colonne2"><input type="text" id="txtForce"/></div>            
+                        </div>
+                        <div class="ligne">
+                            <div class="Colonne1">Constitution :</div>
+                            <div class="Colonne2"><input type="text" id="txtConstitution"/></div>
+                        </div>
+                        <div class="ligne">
+                            <div class="Colonne1">Dextérité : </div>
+                            <div class="Colonne2"><input type="text" id="txtDexterite"/></div>
+                        </div>
+                        <div class="ligne">
+                            <div class="Colonne1">Intelligence : </div>
+                            <div class="Colonne2"><input type="text" id="txtIntelligence"/></div>
+                        </div>
+                        <div class="ligne">
+                            <div class="Colonne1">Sagesse : </div>
+                            <div class="Colonne2"><input type="text" id="txtSagesse"/></div>
+                        </div>
+                        <div class="ligne">
+                            <div class="Colonne1">Charisme : </div>
+                            <div class="Colonne2"><input type="text" id="txtCharisme"/></div>
+                        </div>
+                        <div class="ligne">
+                            <div class="Colonne1">Point d'expérience : </div>
+                            <div class="Colonne2"><input type="text" id="txtPointExperience"/></div>
+                        </div>
+                        <div class="ligne">
+                            <div class="Colonne1"> </div>
+                            <div class="Colonne2"><input type="button" id="btnCreationPersonnage" onclick="maFunction();" value="Créer personnage"/></div>
+                        </div>
                     </div>
                     <div class="Colonne2" style="width: 500px;">
                         Les compétences<br/><span id="spanAlerte" style="display: none; color: red;">Trop de compétences choisies</span>
                         <div id="chkCompetence"></div>
                     </div>
-                </div>
-                <h1>Les caratéristiques</h1>
-                <div class="ligne">
-                    <div class="Colonne1">Force : </div>
-                    <div class="Colonne2"><input type="text" id="txtForce"/></div>            
-                </div>
-                <div class="ligne">
-                    <div class="Colonne1">Constitution :</div>
-                    <div class="Colonne2"><input type="text" id="txtConstitution"/></div>
-                </div>
-                <div class="ligne">
-                    <div class="Colonne1">Dextérité : </div>
-                    <div class="Colonne2"><input type="text" id="txtDexterite"/></div>
-                </div>
-                <div class="ligne">
-                    <div class="Colonne1">Intelligence : </div>
-                    <div class="Colonne2"><input type="text" id="txtIntelligence"/></div>
-                </div>
-                <div class="ligne">
-                    <div class="Colonne1">Sagesse : </div>
-                    <div class="Colonne2"><input type="text" id="txtSagesse"/></div>
-                </div>
-                <div class="ligne">
-                    <div class="Colonne1">Charisme : </div>
-                    <div class="Colonne2"><input type="text" id="txtCharisme"/></div>
-                </div>
-                <div class="ligne">
-                    <div class="Colonne1">Point d'expérience : </div>
-                    <div class="Colonne2"><input type="text" id="txtPointExperience"/></div>
-                </div>
-                <div class="ligne">
-                    <div class="Colonne1"> </div>
-                    <div class="Colonne2"><input type="button" id="btnCreationPersonnage" onclick="maFunction();" value="Créer personnage"/></div>
-                </div>
+                    <div class="Colonne3" style="width: 500px;">
+                        <h2>Les compétences</h2>
+                        <div class="ligne"><div class="Colonne1">Acrobaties : <span id="spAcrobaties"></span></div></div>
+                        <div class='ligne'><div class='Colonne1'>Arcanes : <span id='spArcanes'></span></div></div>
+                        <div class='ligne'><div class='Colonne1'>Athlétisme : <span id='spAthletisme'></span></div></div>
+                        <div class='ligne'><div class='Colonne1'>Bluff : <span id='spBluff'></span></div></div>
+                        <div class='ligne'><div class='Colonne1'>Conn de la rue : <span id='spConn de la rue'></span></div></div>
+                        <div class='ligne'><div class='Colonne1'>Diplomatie : <span id='spDiplomatie'></span></div></div>
+                        <div class='ligne'><div class='Colonne1'>Discrétion : <span id='spDiscretion'></span></div></div>
+                        <div class='ligne'><div class='Colonne1'>Endurance : <span id='spEndurance'></span></div></div>
+                        <div class='ligne'><div class='Colonne1'>Exploration : <span id='spExploration'></span></div></div>
+                        <div class='ligne'><div class='Colonne1'>Histoire : <span id='spHistoire'></span></div></div>
+                        <div class='ligne'><div class='Colonne1'>Intimidation : <span id='spIntimidation'></span></div></div>
+                        <div class='ligne'><div class='Colonne1'>Intuition : <span id='spIntuition'></span></div></div>
+                        <div class='ligne'><div class='Colonne1'>Larcin : <span id='spLarcin'></span></div></div>
+                        <div class='ligne'><div class='Colonne1'>Nature : <span id='spNature'></span></div></div>
+                        <div class='ligne'><div class='Colonne1'>Perception : <span id='spPerception'></span></div></div>
+                        <div class='ligne'><div class='Colonne1'>Religion : <span id='spReligion'></span></div></div>
+                        <div class='ligne'><div class='Colonne1'>Soins : <span id='spSoins'></span></div></div>                        
+                    </div>
+                </div>                
             </div>
             <div id="divAffichage" class="ligne">
                 <div class="ligne"><b>Voici le résutat de la création du personnage</b></div>
                 <div class="ligne">
                     <div class="Colonne1">Nom du personnage : </div>
                     <div class="Colonne2"><span id="spNomPersonnage"></span></div>
-                </div>        
+                </div>
                 <div class="ligne">
                     <div class="Colonne1">Race du personnage : </div>
                     <div class="Colonne2"><span id="spRacePersonnage"></span></div>
@@ -200,6 +220,5 @@
         </div>
     </div>
     <script type="module" src="/dist/model/menutabs.js"></script>
-    <input type="checkbox" id="biloute" name="biloutename" data-biloute="trucbiloute">
   </body>
 </html>
