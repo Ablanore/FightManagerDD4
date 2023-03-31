@@ -18,7 +18,7 @@
           <div id="divGlobal" class="ligne">
             <div class="container" id="divSaisie">
                 <div class="ligne">
-                    <div class="Colonne1">
+                    <div class="Colonne1" style="width: 500px;">
                         <div class="ligne">
                             <label for="ddlRace">Race :</label>
                             <select id="ddlRace"></select>
@@ -28,8 +28,8 @@
                             <select id="ddlClasse"></select>
                         </div>
                     </div>
-                    <div class="Colonne2">
-                        Les compétences<br/>
+                    <div class="Colonne2" style="width: 500px;">
+                        Les compétences<br/><span id="spanAlerte" style="display: none; color: red;">Trop de compétences choisies</span>
                         <div id="chkCompetence"></div>
                     </div>
                 </div>
@@ -200,5 +200,6 @@
         </div>
     </div>
     <script type="module" src="/dist/model/menutabs.js"></script>
+    <input type="checkbox" id="biloute" name="biloutename" data-biloute="trucbiloute">
   </body>
 </html>

@@ -73,15 +73,40 @@ populateDropdownList('ddlClasse', ClasseData, 'IdClasse', 'NomClasse');
 (document.getElementById('ddlClasse') as HTMLSelectElement)!.onchange = function(monEvent: any) {
   const divComp = document.getElementById('chkCompetence') as HTMLDivElement;
   divComp.replaceChildren();
-  console.log(monEvent);
+  const spanAlerte = document.getElementById('spanAlerte') as HTMLSpanElement;
+  spanAlerte.style.display = "none";
+  //console.log(monEvent);
   const choixIdClasse = monEvent.target.selectedOptions[0].value;
   const choixClasse = ClasseData.find(classe => classe.IdClasse === choixIdClasse);  
   const comptenceClasse = Object.entries(choixClasse?.Competence as any);
+  //Récupération du nombre de compétence.
+  let nbComptence: number = 0;
   comptenceClasse.forEach((item: any) => {
+    if (item[1] === 'x') {
+      nbComptence ++;
+    }
+  })
+  //Affichage du nombre de compétence au dessus de la liste.
+  const lblAffichageComptenceAChoisir = document.createElement('span');
+  lblAffichageComptenceAChoisir.textContent = 'Nombre de compétences à choisir : ' + choixClasse?.NombreCompetence?.toString();
+  lblAffichageComptenceAChoisir.style.display = "Block";
+  const lblAffichageComptenceChoisie = document.createElement('span');
+  lblAffichageComptenceChoisie.textContent = 'Nombre de compétences choisies : 0';
+  lblAffichageComptenceChoisie.style.display = "Block";
+  lblAffichageComptenceChoisie.id = "spanComptageCompetence"
+  divComp.appendChild(lblAffichageComptenceAChoisir);  
+  divComp.appendChild(lblAffichageComptenceChoisie);
+  //Affichage des cases à cocher pour les compétences disponbiles par classe.
+  comptenceClasse.forEach((item: any) => {
+    const leBR = document.createElement('br');
     const caseAcocher = document.createElement('input');
     caseAcocher.type = 'checkbox';
     caseAcocher.id = "id" + item[0];
     caseAcocher.name = "nom" + item[0];
+    caseAcocher.setAttribute("data-oblige", item[1]);
+    caseAcocher.onchange = function(event) { 
+      comptageCaseCoche(choixClasse?.NombreCompetence !== undefined ? choixClasse.NombreCompetence : 0,caseAcocher.id); 
+    };
     if (item[1] === 'o') {
       caseAcocher.checked = true;
       caseAcocher.disabled = true;
@@ -90,8 +115,31 @@ populateDropdownList('ddlClasse', ClasseData, 'IdClasse', 'NomClasse');
     const labelCHK = document.createElement('label') as HTMLLabelElement;
     labelCHK.textContent = item[0];
     labelCHK.htmlFor = caseAcocher.id;
-    divComp.appendChild(labelCHK);
-    const leBR = document.createElement('br');
+    divComp.appendChild(labelCHK);    
     divComp.appendChild(leBR);
   })
 };
+
+async function comptageCaseCoche(nbComptence: number, chkID: string) {
+  const divComp = document.getElementById('chkCompetence') as HTMLDivElement;
+  // Récupérer toutes les cases à cocher dans le DIV avec toutes les conditions exprimées en une fois
+  const checkboxes = divComp.querySelectorAll('input[type="checkbox"][data-oblige="x"]:checked');
+  // Compter le nombre de cases cochées par le longueur du tableau
+  let checked = Array.from(checkboxes).length;
+  //Tester si on ne dépasse pas la limite du nombre de compétences.
+  const spanAlerte = document.getElementById('spanAlerte') as HTMLSpanElement;
+  if (checked > nbComptence) {        
+    spanAlerte.style.display = "block";
+    const chkUnchecked = document.getElementById(chkID) as HTMLInputElement
+    chkUnchecked.checked = false;
+    checked --;
+  }
+  else
+  {
+    spanAlerte.style.display = "none";
+  }
+  // Afficher le comaptge dans le SPAN prévu à cet effet.
+  const lblAffichageComptenceChoisie = document.createElement('span');
+  const spanComptageCompetence = document.getElementById('spanComptageCompetence') as HTMLSpanElement;
+  spanComptageCompetence.textContent = 'Nombre de compétences choisies : ' + checked;
+}

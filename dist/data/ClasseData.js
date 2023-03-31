@@ -15,7 +15,7 @@ export const ClasseData = [
         "NombreCompetence": 3,
         "Competence": {
             "Athletisme": "x",
-            "ConnDeLaRue": "o",
+            "ConnDeLaRue": "x",
             "Endurance": "x",
             "Intimidation": "x",
             "Soins": "x"
@@ -51,12 +51,14 @@ export const ClasseData = [
         "Volonte": 1,
         "Vigueur": 1,
         "NombreCompetence": 4,
-        "Athletisme": "x",
-        "Diplomatie": "x",
-        "Endurance": "x",
-        "Histoire": "x",
-        "Intimidation": "x",
-        "Soins": "x"
+        "Competence": {
+            "Athletisme": "x",
+            "Diplomatie": "x",
+            "Endurance": "x",
+            "Histoire": "x",
+            "Intimidation": "x",
+            "Soins": "x"
+        }
     },
     {
         "IdClasse": "Paladin",
@@ -68,13 +70,15 @@ export const ClasseData = [
         "Volonte": 1,
         "Vigueur": 1,
         "NombreCompetence": 3,
-        "Diplomatie": "x",
-        "Endurance": "x",
-        "Histoire": "x",
-        "Intuition": "x",
-        "Intimidation": "x",
-        "Religion": "o",
-        "Soins": "x"
+        "Competence": {
+            "Diplomatie": "x",
+            "Endurance": "x",
+            "Histoire": "x",
+            "Intuition": "x",
+            "Intimidation": "x",
+            "Religion": "o",
+            "Soins": "x"
+        }
     },
     {
         "IdClasse": "Pretre",
@@ -86,12 +90,14 @@ export const ClasseData = [
         "Volonte": 2,
         "Vigueur": 0,
         "NombreCompetence": 3,
-        "Arcanes": "x",
-        "Diplomatie": "x",
-        "Histoire": "x",
-        "Intuition": "x",
-        "Religion": "o",
-        "Soins": "x"
+        "Competence": {
+            "Arcanes": "x",
+            "Diplomatie": "x",
+            "Histoire": "x",
+            "Intuition": "x",
+            "Religion": "o",
+            "Soins": "x"
+        }
     },
     {
         "IdClasse": "Rodeur",
@@ -103,14 +109,16 @@ export const ClasseData = [
         "Volonte": 0,
         "Vigueur": 1,
         "NombreCompetence": 4,
-        "Acrobaties": "x",
-        "Athletisme": "x",
-        "Discretion": "x",
-        "Endurance": "x",
-        "Exploration": "c",
-        "Nature": "c",
-        "Perception": "x",
-        "Soins": "x"
+        "Competence": {
+            "Acrobaties": "x",
+            "Athletisme": "x",
+            "Discretion": "x",
+            "Endurance": "x",
+            "Exploration": "c",
+            "Nature": "c",
+            "Perception": "x",
+            "Soins": "x"
+        }
     },
     {
         "IdClasse": "Sorcier",
@@ -122,14 +130,16 @@ export const ClasseData = [
         "Volonte": 1,
         "Vigueur": 0,
         "NombreCompetence": 4,
-        "Arcanes": "x",
-        "Bluff": "x",
-        "ConnDeLaRue": "x",
-        "Histoire": "x",
-        "Intuition": "x",
-        "Intimidation": "x",
-        "Larcin": "x",
-        "Religion": "x"
+        "Competence": {
+            "Arcanes": "x",
+            "Bluff": "x",
+            "ConnDeLaRue": "x",
+            "Histoire": "x",
+            "Intuition": "x",
+            "Intimidation": "x",
+            "Larcin": "x",
+            "Religion": "x"
+        }
     },
     {
         "IdClasse": "Voleur",
@@ -141,15 +151,17 @@ export const ClasseData = [
         "Volonte": 0,
         "Vigueur": 0,
         "NombreCompetence": 4,
-        "Acrobaties": "x",
-        "Athletisme": "x",
-        "Bluff": "x",
-        "ConnDeLaRue": "x",
-        "Discretion": "o",
-        "Exploration": "x",
-        "Intuition": "x",
-        "Intimidation": "x",
-        "Larcin": "o",
-        "Perception": "x"
+        "Competence": {
+            "Acrobaties": "x",
+            "Athletisme": "x",
+            "Bluff": "x",
+            "ConnDeLaRue": "x",
+            "Discretion": "o",
+            "Exploration": "x",
+            "Intuition": "x",
+            "Intimidation": "x",
+            "Larcin": "o",
+            "Perception": "x"
+        }
     }
 ];
