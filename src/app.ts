@@ -3,9 +3,11 @@ import { RaceData } from "./data/RaceData.js";
 import { ClasseData } from "./data/ClasseData.js";
 import { Race } from "./model/race.js";
 import { Classe } from "./model/classe.js";
+import { Talent, listeTalent } from "./model/talent.js";
 
 populateDropdownList('ddlRace', RaceData, 'IdRace', 'NomRace');
 populateDropdownList('ddlClasse', ClasseData, 'IdClasse', 'NomClasse');
+
 var testPerso = new Personnage(
   parseInt((document.getElementById('txtForce') as HTMLInputElement)?.value),
   parseInt((document.getElementById('txtConstitution') as HTMLInputElement)?.value),
@@ -17,7 +19,7 @@ var testPerso = new Personnage(
   ,(document.getElementById('ddlRace') as HTMLSelectElement)?.value
   ,(document.getElementById('ddlClasse') as HTMLSelectElement)?.value
 );
-
+listeTalent(testPerso);
 export function maFunction() {
     //console.log('ici cest bien App');
     //console.log((document.getElementById('ddlRace') as HTMLSelectElement)?.value);
@@ -30,32 +32,40 @@ export function maFunction() {
     testPerso.race = new Race((document.getElementById('ddlRace') as HTMLSelectElement)?.value);
     testPerso.classe = new Classe((document.getElementById('ddlClasse') as HTMLSelectElement)?.value);
     testPerso.pointExperience = parseInt((document.getElementById('txtPointExperience') as HTMLInputElement)?.value);
-    document.getElementById("spNiveau")!.innerHTML = testPerso.niveau.toString();
+    formationCompetence();
+    //Etat civil du personnage
+    //document.getElementById("spRace")!.innerHTML = testPerso.race.nomRace.toString();
+    //document.getElementById("spClasse")!.innerHTML = testPerso.classe.nomClasse.toString();
     document.getElementById("spVoieParangonique")!.innerHTML = testPerso.VoieParangonique.toString();
     document.getElementById("spDestineeEpique")!.innerHTML = testPerso.DestineeEpique.toString();
+    document.getElementById("spNiveau")!.innerHTML = testPerso.niveau.toString();
+    document.getElementById("spDemiNiveau")!.innerHTML = testPerso.demiNiveau.toString();
+    //Caractéristiqueq du personnage
     document.getElementById("spForce")!.innerHTML = testPerso.Pforce.toString();
     document.getElementById("spConstitution")!.innerHTML = testPerso.Pconstitution.toString();
     document.getElementById("spDexterite")!.innerHTML = testPerso.Pdexterite.toString();
     document.getElementById("spIntelligence")!.innerHTML = testPerso.Pintelligence.toString();
     document.getElementById("spSagesse")!.innerHTML = testPerso.Psagesse.toString();
     document.getElementById("spCharisme")!.innerHTML = testPerso.Pcharisme.toString();
-    document.getElementById("spCA")!.innerHTML = testPerso.CA.toString();
-    document.getElementById("spVigueur")!.innerHTML = testPerso.Vigueur.toString();
-    document.getElementById("spReflexes")!.innerHTML = testPerso.Reflexes.toString();
-    document.getElementById("spVolonte")!.innerHTML = testPerso.Volonte.toString();
-    document.getElementById("spInitiative")!.innerHTML = testPerso.Initiative.toString();
-    document.getElementById("spVitesse")!.innerHTML = testPerso.Vitesse.toString();
-    document.getElementById("spPV")!.innerHTML = testPerso.PV.toString();
-    document.getElementById("spPéril")!.innerHTML = testPerso.Peril.toString();
-    document.getElementById("spRecuperation")!.innerHTML = testPerso.Recuperation.toString();
-    document.getElementById("spRecuperationParjour")!.innerHTML = testPerso.RecuperationParjour.toString();
-    document.getElementById("spDemiNiveau")!.innerHTML = testPerso.demiNiveau.toString();
     document.getElementById("spModForce")!.innerHTML = testPerso.ModForce.toString();
     document.getElementById("spModConstitution")!.innerHTML = testPerso.ModConstitution.toString();
     document.getElementById("spModDexterite")!.innerHTML = testPerso.ModDexterite.toString();
     document.getElementById("spModIntelligence")!.innerHTML = testPerso.ModIntelligence.toString();
     document.getElementById("spModSagesse")!.innerHTML = testPerso.ModSagesse.toString();
     document.getElementById("spModCharisme")!.innerHTML = testPerso.ModCharisme.toString();
+    //Défenses du personnage
+    document.getElementById("spCA")!.innerHTML = testPerso.CA.toString();
+    document.getElementById("spVigueur")!.innerHTML = testPerso.Vigueur.toString();
+    document.getElementById("spReflexes")!.innerHTML = testPerso.Reflexes.toString();
+    document.getElementById("spVolonte")!.innerHTML = testPerso.Volonte.toString();
+    //les autres trucs du personnage
+    document.getElementById("spInitiative")!.innerHTML = testPerso.Initiative.toString();
+    document.getElementById("spVitesse")!.innerHTML = testPerso.Vitesse.toString();
+    document.getElementById("spPV")!.innerHTML = testPerso.PV.toString();
+    document.getElementById("spPéril")!.innerHTML = testPerso.Peril.toString();
+    document.getElementById("spRecuperation")!.innerHTML = testPerso.Recuperation.toString();
+    document.getElementById("spRecuperationParjour")!.innerHTML = testPerso.RecuperationParjour.toString();
+    
 //Affichage des compétences
     document.getElementById('spAcrobaties')!.innerHTML = testPerso.PAcrobaties.toString();
     document.getElementById('spArcanes')!.innerHTML = testPerso.PArcanes.toString();
@@ -74,32 +84,9 @@ export function maFunction() {
     document.getElementById('spPerception')!.innerHTML = testPerso.PPerception.toString();
     document.getElementById('spReligion')!.innerHTML = testPerso.PReligion.toString();
     document.getElementById('spSoins')!.innerHTML = testPerso.PSoins.toString();
-    console.log(testPerso);
+    //console.log(testPerso);
 }
 (window as any).maFunction = maFunction;
-interface HTMLData {
-  HTMLValue: string;
-  HTMLText: string;
-}
-async function populateDropdownList(DDL: string, dataSource: any, valueFieldName: string, textFieldName: string): Promise<void> {
-  const htmlData = dataSource.map((data: any) => {
-    return {
-      HTMLValue: data[valueFieldName],
-      HTMLText: data[textFieldName],
-    };
-  });
-  const ddlARemplir = document.getElementById(DDL) as HTMLSelectElement;
-  if (ddlARemplir !== null) {
-      htmlData.forEach((item: any) => {
-      const option = document.createElement('option');
-      option.value = item.HTMLValue;
-      option.text = item.HTMLText;
-      ddlARemplir.add(option);
-      });
-  } else {
-    console.error("Element with ID 'ddl' not found");
-  }    
-}
 (document.getElementById('txtForce') as HTMLInputElement)!.onchange = function(monEvent: any) {
   maFunction();
 };
@@ -120,8 +107,11 @@ async function populateDropdownList(DDL: string, dataSource: any, valueFieldName
 };
 (document.getElementById('ddlRace') as HTMLSelectElement)!.onchange = function(monEvent: any) {
   maFunction();
+  listeTalent(testPerso);
 };
-
+(document.getElementById('txtPointExperience') as HTMLSelectElement)!.onchange = function(monEvent: any) {
+  maFunction();
+};
 (document.getElementById('ddlClasse') as HTMLSelectElement)!.onchange = function(monEvent: any) {
   const divComp = document.getElementById('chkCompetence') as HTMLDivElement;
   divComp.replaceChildren();
@@ -175,8 +165,8 @@ async function populateDropdownList(DDL: string, dataSource: any, valueFieldName
     caseAcocher.id = "id" + item[0];
     caseAcocher.name = "nom" + item[0];
     caseAcocher.setAttribute("data-oblige", item[1]);
-    caseAcocher.onchange = function(event) { 
-      comptageCaseCoche(choixClasse?.NombreCompetence !== undefined ? choixClasse.NombreCompetence : 0,caseAcocher.id); 
+    caseAcocher.onchange = function(event) {
+      comptageCaseCoche(choixClasse?.NombreCompetence !== undefined ? choixClasse.NombreCompetence : 0,caseAcocher.id);
     };
     if (item[1] === 'o') {
       caseAcocher.checked = true;
@@ -190,12 +180,80 @@ async function populateDropdownList(DDL: string, dataSource: any, valueFieldName
     divComp.appendChild(leBR);
   })
   maFunction();
+  listeTalent(testPerso);
 };
 
+interface HTMLData {
+  HTMLValue: string;
+  HTMLText: string;
+}
+//Cette fonction permet de peupler une DDL avec des données venant d'une struture JSON qui mise en place grâce à l'interface HTMLData.
+async function populateDropdownList(DDL: string, dataSource: any, valueFieldName: string, textFieldName: string): Promise<void> {
+  const htmlData = dataSource.map((data: any) => {
+    return {
+      HTMLValue: data[valueFieldName],
+      HTMLText: data[textFieldName],
+    };
+  });
+  const ddlARemplir = document.getElementById(DDL) as HTMLSelectElement;
+  if (ddlARemplir !== null) {
+      htmlData.forEach((item: any) => {
+      const option = document.createElement('option');
+      option.value = item.HTMLValue;
+      option.text = item.HTMLText;
+      ddlARemplir.add(option);
+      });
+  } else {
+    console.error("Element with ID 'ddl' not found");
+  }    
+}
+//Cette fonction sert à gérer le comptage de compétences choisies en fonction du nombre de compétence que la classe permet de prendre.
 async function comptageCaseCoche(nbComptence: number, chkID: string) {
-  const divComp = document.getElementById('chkCompetence') as HTMLDivElement;
-  // Récupérer toutes les cases à cocher dans le DIV avec toutes les conditions exprimées en une fois
-  const checkboxes = divComp.querySelectorAll('input[type="checkbox"][data-oblige="x"]:checked');
+  
+  const classeChoisie = document.getElementById('ddlClasse') as HTMLSelectElement;
+  //Gestion du cas particulier du Rôdeur
+  if (classeChoisie.value === "Rodeur") {    
+    const competenceJusteCLicke  = document.getElementById(chkID) as HTMLInputElement;;
+    const exploration = document.getElementById('idExploration') as HTMLInputElement;
+    const nature = document.getElementById('idNature') as HTMLInputElement;
+
+    if (chkID === 'idExploration' && exploration.checked && !nature.checked) {
+      nature.setAttribute('data-oblige',"x");
+      exploration.setAttribute('data-oblige',"oc");
+    }
+    else if (chkID === 'idNature' && !exploration.checked && nature.checked) {
+      exploration.setAttribute('data-oblige',"x");      
+      nature.setAttribute('data-oblige',"oc");
+    }
+    else if (chkID === 'idExploration' && !exploration.checked && !nature.checked) {
+      nature.setAttribute('data-oblige',"c");
+      exploration.setAttribute('data-oblige',"c");
+    }
+    else if (chkID === 'idNature' && !exploration.checked && !nature.checked) {
+      nature.setAttribute('data-oblige',"c");
+      exploration.setAttribute('data-oblige',"c");
+    }
+    else if (chkID === 'idExploration' && exploration.checked && nature.checked) {
+      
+    }
+    else if (chkID === 'idNature' && exploration.checked && nature.checked) {
+      
+    }
+    else if (chkID === 'idExploration' && !exploration.checked && nature.checked) {
+      if(nature.getAttribute('data-oblige') === "x"){
+        nature.setAttribute('data-oblige',"oc");
+        exploration.setAttribute('data-oblige',"x");
+      }
+    }
+    else if (chkID === 'idNature' && exploration.checked && !nature.checked) {
+      if(exploration.getAttribute('data-oblige') === "x"){
+        exploration.setAttribute('data-oblige',"oc");
+        nature.setAttribute('data-oblige',"x");
+      }
+    }
+  }
+  // Récupérer toutes les cases à cocher dans le DIV chkCompetence avec toutes les conditions exprimées en une fois
+  const checkboxes = document.querySelectorAll('#chkCompetence > input[type="checkbox"][data-oblige="x"]:checked');
   // Compter le nombre de cases cochées par le longueur du tableau
   let checked = Array.from(checkboxes).length;
   //Tester si on ne dépasse pas la limite du nombre de compétences.
@@ -209,70 +267,77 @@ async function comptageCaseCoche(nbComptence: number, chkID: string) {
   else
   {
     spanAlerte.style.display = "none";
-    let valueFormation: number = 0;
-    if (chkCompetence.checked) {
-      valueFormation = 5
-    }
-    else
-    {valueFormation = 0}
-    switch (chkID) {
+  }
+  // Afficher le comptage dans le SPAN prévu à cet effet.  
+  (document.getElementById('spanComptageCompetence') as HTMLSpanElement).textContent = 'Nombre de compétences choisies : ' + checked;
+  //spanComptageCompetence.textContent = 'Nombre de compétences choisies : ' + checked;
+  maFunction();
+}
+//Cette fonction sert gérer la formation des compétences en focntion de la classe choisie
+function formationCompetence() {
+  // Récupérer toutes les cases à cocher dans le DIV chkCompetence avec toutes les conditions exprimées en une fois
+  const checkboxes = document.querySelectorAll('#chkCompetence > input[type="checkbox"]');
+  checkboxes.forEach((item: any) => {
+    const chk: HTMLInputElement = item;
+    switch (chk.id) {
       case 'idAcrobaties':
-        testPerso.FAcrobaties = valueFormation;
+        testPerso.FAcrobaties = attributionFormationCompetence(chk.checked);
         break;
       case 'idArcanes': 
-        testPerso.FArcanes = valueFormation;
+        testPerso.FArcanes = attributionFormationCompetence(chk.checked);
         break;
       case 'idAthletisme':
-        testPerso.FAthletisme = valueFormation;        
+        testPerso.FAthletisme = attributionFormationCompetence(chk.checked);
         break;
       case 'idBluff': 
-        testPerso.FBluff = valueFormation;
+      testPerso.FBluff = attributionFormationCompetence(chk.checked);
         break;
       case 'idConnDeLaRue': 
-        testPerso.FConnDeLaRue = valueFormation;
+      testPerso.FConnDeLaRue = attributionFormationCompetence(chk.checked);
         break;
       case 'idDiplomatie':
-        testPerso.FDiplomatie = valueFormation;
+        testPerso.FDiplomatie = attributionFormationCompetence(chk.checked);
         break;
       case 'idDiscretion':
-        testPerso.FDiscretion = valueFormation;
+        testPerso.FDiscretion = attributionFormationCompetence(chk.checked);
         break;
       case 'idEndurance':
-        testPerso.FEndurance = valueFormation;
+        testPerso.FEndurance = attributionFormationCompetence(chk.checked);
         break;
       case 'idExploration':
-        testPerso.FExploration = valueFormation;
+        testPerso.FExploration = attributionFormationCompetence(chk.checked);
         break;
       case 'idHistoire':
-        testPerso.FHistoire = valueFormation;
+        testPerso.FHistoire = attributionFormationCompetence(chk.checked);
         break;
       case 'idIntimidation':
-        testPerso.FIntimidation = valueFormation;
+        testPerso.FIntimidation = attributionFormationCompetence(chk.checked);
         break;
       case 'idIntuition':
-        testPerso.FIntuition = valueFormation;
+        testPerso.FIntuition = attributionFormationCompetence(chk.checked);
         break;
       case 'idLarcin':
-        testPerso.FLarcin = valueFormation;
+        testPerso.FLarcin = attributionFormationCompetence(chk.checked);
         break;
       case 'idNature':
-        testPerso.FNature = valueFormation;
+        testPerso.FNature = attributionFormationCompetence(chk.checked);
         break;
       case 'idPerception':
-        testPerso.FPerception = valueFormation;
+        testPerso.FPerception = attributionFormationCompetence(chk.checked);
         break;
       case 'idReligion':
-        testPerso.FReligion = valueFormation;
+        testPerso.FReligion = attributionFormationCompetence(chk.checked);
         break;
       case 'idSoins':
-        testPerso.FSoins = valueFormation;
+        testPerso.FSoins = attributionFormationCompetence(chk.checked);
         break;
       default:
         break;
     }
-  }
-  // Afficher le comaptge dans le SPAN prévu à cet effet.  
-  const spanComptageCompetence = document.getElementById('spanComptageCompetence') as HTMLSpanElement;
-  spanComptageCompetence.textContent = 'Nombre de compétences choisies : ' + checked;
-  maFunction();
+  })
+}
+//Cette fonction est appellée par formationCompetence pour attribuer les 5 points dans la propriété de Personnage en cas de cochage de la compétence
+function attributionFormationCompetence(chk: boolean): number {
+  if (chk) { return 5; } 
+  else { return 0; }
 }

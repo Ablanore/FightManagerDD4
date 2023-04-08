@@ -59,8 +59,7 @@ export const ClasseData =
       "Histoire": "x",
       "Intimidation": "x",
       "Soins": "x"
-      }
-    },
+    }},
     {
     "IdClasse": "Paladin",
     "NomClasse": "Paladin",

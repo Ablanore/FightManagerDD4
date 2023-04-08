@@ -39,18 +39,18 @@ const levelTable: LevelData[] = [
 ];
 
 export class Personnage {
-    private idrace: string = "";
-    private idclasse: string = "";
+    private idrace: string;
+    private idclasse: string;
     public nomPersonnage: string = "";
     public race: Race;
     public classe: Classe;
-    public pointExperience: number = 0;
-    public Bforce: number = 0
-    public Bconstitution: number = 0
-    public Bdexterite: number = 0
-    public Bintelligence: number = 0
-    public Bsagesse: number = 0
-    public Bcharisme: number = 0
+    public pointExperience: number;
+    public Bforce: number;
+    public Bconstitution: number;
+    public Bdexterite: number;
+    public Bintelligence: number;
+    public Bsagesse: number;
+    public Bcharisme: number;
 
     constructor(force: number, constitution: number, dexterite: number, intelligence: number, sagesse: number, charisme: number,
         experience: number, idRace:string, idClasse: string) {
@@ -74,38 +74,11 @@ export class Personnage {
         const levelData = levelTable.find((data) => experience >= data.experienceMin && experience <= data.experienceMax);
         return levelData ? levelData.level : levelTable[levelTable.length - 1].level;
     }    
-    public get PV(): number { return 0;}
+    public get PV(): number { return this.classe.pointVieBase + this.ModConstitution;}
     public get Peril(): number { return Math.floor(this.PV/2);}
     public get Recuperation(): number { return Math.floor(this.PV/4);}
-    public get RecuperationParjour(): number { return 0;}    
+    public get RecuperationParjour(): number { return this.classe.recuperation;}
 
-    public getCalculModCarac(caractersitique: number): number {        
-        const ranges = ["1", "2-3", "4-5", "6-7", "8-9", "10-11", "12-13", "14-15", "16-17", "18-19", "20-21", "22-23", "24-25"];
-        const mods = [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7];
-        
-        for (let i = 0; i < ranges.length; i++) {
-            const range = ranges[i];
-            const [min, max] = range.split("-");
-            if (max) {
-            const minNum = parseInt(min, 10);
-            const maxNum = parseInt(max, 10);
-            if (caractersitique >= minNum && caractersitique <= maxNum) {
-                return mods[i];
-            }
-            } else {
-            if (caractersitique === parseInt(min, 10)) {
-                return mods[i];
-            }
-            }
-        }
-        return 0;
-        /*if(caractersitique > 10){
-            return Math.floor((caractersitique-11)/2);
-        }
-        else {
-            return Math.floor((caractersitique-10)/2);
-        } */       
-    }
     public get Pforce(): number { return this.Bforce + this.race.Rforce;}
     public get Pconstitution(): number { return this.Bconstitution + this.race.Rconstitution;}
     public get Pdexterite(): number { return this.Bdexterite + this.race.Rdexterite;}
@@ -113,6 +86,9 @@ export class Personnage {
     public get Psagesse(): number { return this.Bsagesse + this.race.Rsagesse;}
     public get Pcharisme(): number { return this.Bcharisme + this.race.Rcharisme;}
 
+    public getCalculModCarac(caractersitique: number): number {        
+        return Math.ceil((caractersitique-11)/2);
+    }
     public get ModForce(): number { return this.getCalculModCarac(this.Pforce);}
     public get ModConstitution(): number { return this.getCalculModCarac(this.Pconstitution);}
     public get ModDexterite(): number { return this.getCalculModCarac(this.Pdexterite);}
@@ -143,8 +119,8 @@ export class Personnage {
         { caracRetour = carac2;}
         return caracRetour + 10 + this.demiNiveau;
     }
-    public get Initiative(): number { return 0;}
-    public get Vitesse(): number { return 0;}
+    public get Initiative(): number { return this.demiNiveau + this.ModDexterite;}
+    public get Vitesse(): number { return this.race.vitesse;}
     public get VoieParangonique(): number { return 0;}
     public get DestineeEpique(): number { return 0;}
     //Les Compétences : 1/2 niveau + mod carac + formation + Mod racial + divers - pénalité armure

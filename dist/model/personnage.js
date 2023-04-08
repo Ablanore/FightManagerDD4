@@ -82,10 +82,10 @@ export class Personnage {
         const levelData = levelTable.find((data) => experience >= data.experienceMin && experience <= data.experienceMax);
         return levelData ? levelData.level : levelTable[levelTable.length - 1].level;
     }
-    get PV() { return 0; }
+    get PV() { return this.classe.pointVieBase + this.ModConstitution; }
     get Peril() { return Math.floor(this.PV / 2); }
     get Recuperation() { return Math.floor(this.PV / 4); }
-    get RecuperationParjour() { return 0; }
+    get RecuperationParjour() { return this.classe.recuperation; }
     getCalculModCarac(caractersitique) {
         const ranges = ["1", "2-3", "4-5", "6-7", "8-9", "10-11", "12-13", "14-15", "16-17", "18-19", "20-21", "22-23", "24-25"];
         const mods = [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7];
@@ -151,8 +151,8 @@ export class Personnage {
         }
         return caracRetour + 10 + this.demiNiveau;
     }
-    get Initiative() { return 0; }
-    get Vitesse() { return 0; }
+    get Initiative() { return this.demiNiveau + this.ModDexterite; }
+    get Vitesse() { return this.race.vitesse; }
     get VoieParangonique() { return 0; }
     get DestineeEpique() { return 0; }
     //Les Compétences : 1/2 niveau + mod carac + formation + Mod racial + divers - pénalité armure

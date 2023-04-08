@@ -7,7 +7,8 @@
     <title>Document</title>    
   </head>
   <body>
-    Assistant de gestion de combat pour DD4
+    Assistant de gestion de combat pour DD4<br/>
+    <span id="spanTest"></span>
     <div class="tabs">
         <span data-tab-value="#tab_1">Création personnage</span>
         <span data-tab-value="#tab_2">Gestion de combat</span>
@@ -18,7 +19,7 @@
           <div id="divGlobal" class="ligne">
             <div class="container" id="divSaisie">
                 <div class="ligne">
-                    <div class="Colonne1" style="width: 500px;">
+                    <div class="Colonne1" style="width: 350px;border: solid 1px Green;">
                         <div class="ligne">
                             <label for="ddlRace">Race :</label>
                             <select id="ddlRace"></select>
@@ -30,42 +31,49 @@
                         <h1>Les caratéristiques</h1>
                         <div class="ligne">
                             <div class="Colonne1">Force : </div>
-                            <div class="Colonne2"><input type="text" id="txtForce"/></div>            
+                            <div class="Colonne2"><input type="text" id="txtForce" value="10"/></div>            
                         </div>
                         <div class="ligne">
                             <div class="Colonne1">Constitution :</div>
-                            <div class="Colonne2"><input type="text" id="txtConstitution"/></div>
+                            <div class="Colonne2"><input type="text" id="txtConstitution" value="11"/></div>
                         </div>
                         <div class="ligne">
                             <div class="Colonne1">Dextérité : </div>
-                            <div class="Colonne2"><input type="text" id="txtDexterite"/></div>
+                            <div class="Colonne2"><input type="text" id="txtDexterite" value="12"/></div>
                         </div>
                         <div class="ligne">
                             <div class="Colonne1">Intelligence : </div>
-                            <div class="Colonne2"><input type="text" id="txtIntelligence"/></div>
+                            <div class="Colonne2"><input type="text" id="txtIntelligence" value="13"/></div>
                         </div>
                         <div class="ligne">
                             <div class="Colonne1">Sagesse : </div>
-                            <div class="Colonne2"><input type="text" id="txtSagesse"/></div>
+                            <div class="Colonne2"><input type="text" id="txtSagesse" value="14"/></div>
                         </div>
                         <div class="ligne">
                             <div class="Colonne1">Charisme : </div>
-                            <div class="Colonne2"><input type="text" id="txtCharisme"/></div>
+                            <div class="Colonne2"><input type="text" id="txtCharisme" value="15"/></div>
                         </div>
                         <div class="ligne">
                             <div class="Colonne1">Point d'expérience : </div>
-                            <div class="Colonne2"><input type="text" id="txtPointExperience"/></div>
+                            <div class="Colonne2"><input type="text" id="txtPointExperience" value="3220"/></div>
                         </div>
                         <div class="ligne">
                             <div class="Colonne1"> </div>
                             <div class="Colonne2"><input type="button" id="btnCreationPersonnage" onclick="maFunction();" value="Créer personnage"/></div>
                         </div>
                     </div>
-                    <div class="Colonne2" style="width: 500px;">
-                        Les compétences<br/><span id="spanAlerte" style="display: none; color: red;">Trop de compétences choisies</span>
-                        <div id="chkCompetence"></div>
-                    </div>
-                    <div class="Colonne3" style="width: 500px;">
+                    <div class="Colonne2" style="width: 300px;border: solid 1px black;">
+                        <div class="Colonne1" style="width: 300px;border: solid 1px Blue;">
+                            Les compétences<br/><span id="spanAlerte" style="display: none; color: red;">
+                            Trop de compétences choisies</span>
+                            <div id="chkCompetence"></div>
+                        </div>
+                        <div class="Colonne1" style="width: 300px;border: solid 1px yellow;">
+                            Les talents<span id="spNbTalent"></span><br/>
+                            <div id="chkTalent"></div>
+                        </div>
+                    </div>                    
+                    <div class="Colonne3" style="width: 200px;border: solid 1px Red;">
                         <h2>Les compétences</h2>
                         <div class="ligne"><div class="Colonne1">Acrobaties : <span id="spAcrobaties"></span></div></div>
                         <div class='ligne'><div class='Colonne1'>Arcanes : <span id='spArcanes'></span></div></div>

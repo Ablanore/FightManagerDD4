@@ -26,6 +26,8 @@ export class Race {
         this.RPerception = 0;
         this.RReligion = 0;
         this.RSoins = 0;
+        //les autres trucs de la race
+        this.vitesse = 0;
         //console.log('ici cest bien Race');
         //console.log(IdRace);
         const raceData = RaceData.find((race) => race.IdRace === IdRace);
@@ -55,6 +57,8 @@ export class Race {
             this.RPerception = raceData.Perception !== undefined ? raceData.Perception : 0;
             this.RReligion = raceData.Religion !== undefined ? raceData.Religion : 0;
             this.RSoins = raceData.Soins !== undefined ? raceData.Soins : 0;
+            //Les autres trucs de la race
+            this.vitesse = raceData.Vitesse !== undefined ? raceData.Vitesse : 0;
         }
         else {
             throw new Error(`La race avec l'ID "${IdRace}" n'existe pas.`);
